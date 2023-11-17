@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}InfiniteFx - About Us{% endblock %}
+
+{% block content %}  
+<style>
+    .header{
+      background: transparent;
+    }
+    .header.sticky{
+      background-color: #fff;
+      color: #2f2f2f;
+      padding-bottom: 10px;
+    }
+    .main-menu{
+      background-color: transparent; 
+      color: #fff;
+
+    }
+    .header.sticky > .main-menu{
+      background-color: transparent; 
+      color:inherit
+
+    } 
+    .header.sticky > .main-menu .main-menu-item ul li a{
+      color:#2f2f2f;
+      padding: 0;
+      position: relative;
+      transition: all 0.5s ease;
+      background-color: none;
+    }
+    .header.sticky > .main-menu .main-menu-item ul li a:hover{
+      background-color: #fff;
+    }
+    .partners-containers{
+      border-top: 1px solid #2f2f2f;
+    }
+    @media (max-width:767px){
+      .main-menu-item ul{
+        color: #2f2f2f;
+      }
+      .watermark{
+        font-size: 100px;
+        top:59%;
+      }
+      .b-contact-title{
+        font-size: 30px;
+      }
+    }
+    @media (max-width:500px){
+      .main-menu-item ul{
+        color: #2f2f2f;
+      }
+      .watermark{
+        font-size: 70px;
+        top:59%;
+      }
+      .b-contact-title{
+        font-size: 20px;
+      }
+    }
+  </style>
+
+  {% include 'includes/header.html' %}
+
+
+    <!-- Breadcrumbs Start -->
+    
+
+    <div class="breadcrumbs-container">
+      <div class="breadcrumbs">
+        <img src="{% static 'assets/image/breadcrumbs/inr_1.jpg' %}">
+        <div class="b-contact-details">
+          <h2 class="b-contact-title">We’re on a Mission to Democratize Finance for AllABOUT</h2>
+        </div>
+        
+        <h2 class="watermark" style="overflow-x: auto;">About</h2>
+      </div>
+    </div>
+    
+    <!-- Breadcrumbs End -->
+  
+    <!-- about section starts  -->
+  
+    <div class="about-container">
+      <div class="about-items">
+        <div class="about-image">
+          <img src="{% static 'assets/image/about/about.jpg' %}" alt="">
+        </div>
+        <div class="about-desc">
+          <h2 class="about-title">About InfiniteFx</h2>
+          <div class="about-details">
+            <p>We Are United Kingdom-Based Trading And Consulting Company, Consists Of A Team Of Financial Market Professionals Assembled Specifically In Order To Provide The Best Possible Trading Conditions To Its Customers. Our Specialists Have Been Involved In The Development Of Technical Specification For Designing An Up-To-Date Platform That Is Suitable For Both Beginners And Experienced Traders.</p>
+  
+            <p>InfiniteFx is a distinctive investment company offering our investors access to high-growth investment opportunities in Bitcoin markets and other services.</p>
+  
+            <p>We implement best practices of trading & mining of Bitcoins through our operations, while offering flexibility in our investment plans. Our company benefits from an extensive network of global clients.</p>
+          </div>
+          <a href="#" class="btn">View Our Licensce</a>
+        </div>
+      </div>
+    </div>
+    
+
+  {% include 'includes/partners.html' %}
+  <!-- Footer Start -->
+  {% include 'includes/footer.html' %}
+  <!-- Footer End -->
+
+{% endblock %}

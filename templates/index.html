@@ -1,0 +1,530 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}InfiniteFx{% endblock %}
+
+   {% block content %}    
+   {% include 'includes/header.html' %} 
+        
+    <!-- home section start  -->
+  <div class="slidershow-container">
+
+    <div class="mySlides fade">
+      <img src="{% static 'assets/image/homeSlider/slider1.jpg' %}" style="width: 100%;">
+      <div class="overlay"></div>
+      <div class="text">
+        <h2>Discover Your Financial Potential with Infinite Capital</h2>
+        <p>At Investment One, we celebrate your unique financial journey. With tailored solutions, we align seamlessly with your distinct needs and aspirations, guiding you toward personalized success and prosperities</p>
+
+        <div class="btn-container">
+          <a href="#" class="btn">Register</a>
+          <a href="#" class="btn">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="mySlides fade">
+      <img src="{% static 'assets/image/homeSlider/slider2.jpg' %}" style="width: 100%;">
+      <div class="overlay"></div>
+      <div class="text">
+        <h2>Secure Your Investments with Confidence</h2>
+        <p>At InfiniteFx, we celebrate your unique financial journey. With tailored solutions, we align seamlessly with your distinct needs and aspirations, guiding you toward personalized success and prosperity.s</p>
+
+        <div class="btn-container">
+          <button class="btn">Register</button>
+          <button class="btn">Login</button>
+        </div>
+      </div>
+    </div>
+
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+
+  <!-- Premium Services Section Start  -->
+  <div class="premium-container">
+      <div class="premium">
+
+        <div class="premium-items">
+
+          <div class="premium-title">
+            <h2>WHY CHOOSE US</h2>
+            <h1>Valued by a worldwide network of 70,000 <span>clients</span>.</h1>
+          </div>
+
+          <div class="premium-body">
+            <p>Throughout the years, we have guided clients in achieving their financial objectives. We invite you to share your situation with us, so together, we can explore the possibility of working together towards your goals.</p>
+          </div>
+        </div>
+
+        <div class="premium-slider-container">
+          <div class="wrapper">
+            <ul class="carousel">
+              <li class="card">
+                <div class="img"><img src="{% static 'assets/premium-lider/avatar-1.jpg' %}" alt="img" draggable="false"></div>
+                <h2>Asset Management</h2>
+                <span>We serve as a reliable advisor to our clients, aiding them in identifying and accessing options to fulfill their strategic goals</span>
+              </li>
+              <li class="card">
+                <div class="img"><img src="{% static 'assets/premium-lider/avatar-2.jpg' %}" alt="img" draggable="false"></div>
+                <h2>Stocks & Funds</h2>
+                <span>Gain mobile market access. Invest in individual companies or investment bundles (ETFs) without paying any commissions.</span>
+              </li>
+              <li class="card">
+                <div class="img"><img src="{% static 'assets/premium-lider/avatar-3.jpg' %}" alt="img" draggable="false"></div>
+                <h2>Mining and Investment</h2>
+                <span>We assist our valued clients in maximizing their funds by effectively managing and expanding their capital. Utilize tools such as stop loss and take profit orders to safeguard your investments.</span>
+              </li>
+              <li class="card">
+                <div class="img"><img src="{% static 'assets/premium-lider/avatar-2.jpg' %}" alt="img" draggable="false"></div>
+                <h2>Loan</h2>
+                <span>We provide a swift and convenient online application procedure, allowing you to choose your preferred time and location for the closing process. Additionally, you have the flexibility to manage your affairs efficiently</span>
+              </li>
+              <li class="card">
+                <div class="img"><img src="{% static 'assets/premium-lider/avatar-3.jpg' %}" alt="img" draggable="false"></div>
+                <h2>Forex Trade</h2>
+                <span>The Expert Advisor (EA) collaborates with a skilled forex trading team to develop an exceptional FX trading program, offering you the opportunity to trade in a remarkable manner.</span>
+              </li>
+              <li class="card">
+                <div class="img"><img src="{% static 'assets/premium-lider/avatar-2.jpg' %}" alt="img" draggable="false"></div>
+                <h2>MINING</h2>
+                <span>Mining involves extracting valuable minerals or geological materials from the Earth, typically from ore bodies, lodes, veins, seams, reefs, or placers.</span>
+              </li>
+            </ul>
+            <div id="left" class="i fa-angle-left">&#10094;</div>
+            <div id="right" class="i fa-angle-right">&#10095;</div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- about us section -->
+  <div class="container">
+    <div class="aboutus">
+
+      <div class="aboutus-detail">
+        <h2 class="aboutus-title">AT A GLANCE</h2>
+        <h2 class="aboutus-sub-title">About <span>Us</span></h2>
+        <p class="desc">InfiniteFx stands out as an investment firm, granting investors access to high-growth opportunities in Bitcoin markets and various services. Through our operations, we apply top-notch trading and mining practices for Bitcoins, ensuring flexibility in our investment plans. Our company leverages a vast network of clients worldwide for its success.</p>
+
+        <div class="success-rate">
+
+          <div class="skill-bar">
+            <div class="info">
+              <p>Success Rate</p>
+              <p>100%</p>
+            </div>
+            <div class="bar">
+              <span class="success"></span>
+            </div>
+          </div>
+
+          <div class="skill-bar">
+            <div class="info">
+              <p>Happy Clients</p>
+              <p>100%</p>
+            </div>
+            <div class="bar">
+              <span class="happy-client"></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="about-btn">
+          
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
+
+      <div class="aboutus-img">
+        <img src="{% static 'assets/image/about/about-2.jpg' %}" alt="">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- plan sectio starts  -->
+  <div class="price-container">
+    <h2 class="price-title">Pricing Plans</h2>
+    <div class="price-item">
+      <div class="price-card">
+        <div class="plan">
+          <h2>Standard</h2>
+          <img src="{% static 'assets/image/pricing/standard.png' %}" alt="" class="plan-img">
+          <p>
+            <span>
+              <strong>5</strong><small>%</small> 
+            </span>/ 12 Hours</p>
+        </div>
+        <div class="plan-items">
+          <div class="plan-item">
+            <p>Min: $50</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>Max: $300</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>Principle: Included.</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>24x7 Support.</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+        </div>
+        <div class="price-invest">
+          <a href="#" class="btn">Invest Now</a>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="plan">
+          <h2>Business</h2>
+          <img src="{% static 'assets/image/pricing/bussiness.png' %}" alt="" class="plan-img">
+          <p><span>
+            <strong>9</strong><small>%</small> 
+          </span>/ 12 Hours</p>
+        </div>
+        <div class="plan-items">
+          <div class="plan-item">
+            <p>Min: $300</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>Max: $1000</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>Principle: Included.</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>24x7 Support.</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+        </div>
+        <div class="price-invest">
+          <a href="#" class="btn">Invest Now</a>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="plan">
+          <h2>Professional</h2>
+          <img src="{% static 'assets/image/pricing/professional.png' %}" alt="" class="plan-img">
+          <p>
+            <span>
+              <strong>13</strong><small>%</small> 
+            </span>/ 12 Hours</p>
+        </div>
+        <div class="plan-items">
+          <div class="plan-item">
+            <p>Min: $2000</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>Max: $5000</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>Principle: Included.</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>24x7 Support.</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+        </div>
+        <div class="price-invest">
+          <a href="#" class="btn">Invest Now</a>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="plan">
+          <h2>Enterprise</h2>
+          <img src="{% static 'assets/image/pricing/style1/3.png' %}" alt="" class="plan-img">
+          <p><span>
+            <strong>17</strong><small>%</small> 
+          </span>/ 12 Hours</p>
+        </div>
+        <div class="plan-items">
+          <div class="plan-item">
+            <p>Min: $500</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>Max: Unlimited</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>Principle: Included.</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+          <div class="plan-item">
+            <p>24x7 Support.</p><img src="{% static 'assets/image/pricing/mark.png' %}" alt="">
+          </div>
+        </div>
+        <div class="price-invest">
+          <a href="#" class="btn">Invest Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Services Section Start -->
+  <div class="service-container">
+    <div class="service-caputor">
+      <h2 class="first-service-caputor">WHAT WE OFFER</h2>
+      <h2 class="second-service-caputor">We Provide Quality</h2>
+      <h2 class="third-service-caputor">Service.</h2>
+      
+    </div>
+    <div class="service-items">
+
+      <div class="service-item">
+        <div class="service-image-box">
+          <img src="{% static 'assets/image/services/certified.png' %}" class="service-img">
+        </div>
+        <h2 class="title">Certified</h2>
+        <p class="service-desc">Elite-Mining is certified and licensed by 03728899 UK Company House.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-image-box">
+          <img src="{% static 'assets/image/services/Secure-Transaction.png' %}" class="service-img">
+        </div>
+        <h2 class="title">Secure Transaction</h2>
+        <p class="service-desc">Our site is hosted on a highly secured platform with SSL encryption (postive SSL) for secured transaction.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-image-box">
+          <img src="{% static 'assets/image/services/Availability.png' %}" class="service-img">
+        </div>
+        <h2 class="title">Availability</h2>
+        <p class="service-desc">Our site is hosted on stable, powerful and uninterrupted server.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-image-box">
+          <img src="{% static 'assets/image/services/withdrawal.png' %}" class="service-img">
+        </div>
+        <h2 class="title">Instant Withdrawal</h2>
+        <p class="service-desc">Our withdrawals are all processed instantly after they are requested.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-image-box">
+          <img src="{% static 'assets/image/services/247-Hours-Support.png' %}" class="service-img">
+        </div>
+        <h2 class="title">24/7 Hours Support</h2>
+        <p class="service-desc">We provide 24/7 customer support through e-mail.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-image-box">
+          <img src="{% static 'assets/image/services/Investing-and-ending.png' %}" class="service-img">
+        </div>
+        <h2 class="title">Investing and Lending</h2>
+        <p class="service-desc">We provide 24/7 customer support through e-mail.</p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+    "symbols": [
+    {
+        "description": "",
+        "proName": "BINANCE:BTCUSDT"
+    },
+    {
+        "description": "",
+        "proName": "BINANCE:TRBUSDT.P"
+    },
+    {
+        "description": "",
+        "proName": "BINANCE:XRPUSDT"
+    },
+    {
+        "description": "",
+        "proName": "BINANCE:ETHUSDT"
+    },
+    {
+        "description": "",
+        "proName": "BINANCE:LINKUSDT"
+    },
+    {
+        "description": "",
+        "proName": "BINANCE:DOGEUSDT"
+    },
+    {
+        "description": "",
+        "proName": "BINANCE:TRBUSDT.P"
+    },
+    {
+        "description": "",
+        "proName": "BINANCE:LTCUSDT"
+    },
+    {
+        "description": "",
+        "proName": "FX:EURUSD"
+    },
+    {
+        "description": "",
+        "proName": "OANDA:GBPUSD"
+    },
+    {
+        "description": "",
+        "proName": "NASDAQ:TSLA"
+    },
+    {
+        "description": "",
+        "proName": "NASDAQ:NFLX"
+    },
+    {
+        "description": "",
+        "proName": "NASDAQ:GOOGL"
+    },
+    {
+        "description": "",
+        "proName": "OANDA:GBPJPY"
+    },
+    {
+        "description": "",
+        "proName": "FX:AUDUSD"
+    },
+    {
+        "description": "",
+        "proName": "SP:SPX"
+    },
+    {
+        "description": "",
+        "proName": "OANDA:SPX500USD"
+    }
+    ],
+    "showSymbolLogo": true,
+    "colorTheme": "light",
+    "isTransparent": false,
+    "displayMode": "adaptive",
+    "locale": "en"
+}
+    </script>
+</div>
+
+<div style="width: 100%; height: 500px">
+  <div class="tradingview-widget-container" >
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+        {
+        "width": "100%",
+        "height": "100%",
+        "defaultColumn": "overview",
+        "screener_type": "crypto_mkt",
+        "displayCurrency": "USD",
+        "colorTheme": "light",
+        "locale": "en"
+        }
+    </script>
+  </div>
+</div>
+<!-- TradingView Widget END -->
+
+  <!-- Testimonial section starts  -->
+
+  <div class="testimonial-containers">
+    <div class="service-caputor">
+      <h2 class="first-service-caputor">WHAT WE OFFER</h2>
+      <h2 class="second-service-caputor">We Provide Quality</h2>
+      <h2 class="third-service-caputor">Service.</h2>
+      
+    </div>
+    <div class="testimonial-container">
+      <div class="test-wrapper">
+        <ul class="test-carousel">
+
+          <li class="test-card">
+            <img src="{% static 'assets/image/testimonial/quote.png' %}" alt="img" draggable="false">
+            <span>We have been with InfiniteFx now for a year and the service I receive feels very personal. The peace of mind I have from knowing my finances is being so well managed is priceless</span>
+            <h2 class="rating-name">Noah J. Knudsen</h2>
+            <div class="rating-box">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+            </div>
+            
+          </li>
+          
+          <li class="test-card">
+            <img src="{% static 'assets/image/testimonial/quote.png' %}" alt="img" draggable="false">
+            <span> finally know what it's like to live the dream. I no longer feel like I'm on the outside looking in while everyone else has all the fun. </span>
+            <h2 class="rating-name">Fletcher Bélanger</h2>
+            <div class="rating-box">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+            </div>
+            
+          </li>
+          
+          <li class="test-card">
+            <img src="{% static 'assets/image/testimonial/quote.png' %}" alt="img" draggable="false">
+            <span>We have been very satisfied with the service provided by InfiniteFx and over the years and the management of our finances has remained secure to the extent that we can look forward to our late years with a degree of satisfaction knowing that our lifestyle is affordable.</span>
+            <h2 class="rating-name">Janis S. Sorrell</h2>
+            <div class="rating-box">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+            </div>
+            
+          </li>
+          
+          <li class="test-card">
+            <img src="{% static 'assets/image/testimonial/quote.png' %}" alt="img" draggable="false">
+            <span>Just to say many thanks for a very positive meeting yesterday. Hilly and I came away feeling well satisfied that we are able to continue enjoying life without too much stress on the old finances and should be able to carry on with our present lifestyles for some time to come. </span>
+            <h2 class="rating-name">Felix Gottlieb</h2>
+            <div class="rating-box">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+            </div>
+            
+          </li>
+          
+          <li class="test-card">
+            <img src="{% static 'assets/image/testimonial/quote.png' %}" alt="img" draggable="false">
+            <span>InfinteFx team is very professional, I have started to recommend to family, friends, and build my own team, to get passive income. </span>
+            <h2 class="rating-name">Arnoldo Orosco Verdugo</h2>
+            <div class="rating-box">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+            </div>
+            
+          </li>
+          
+          <li class="test-card">
+            <img src="{% static 'assets/image/testimonial/quote.png' %}" alt="img" draggable="false">
+            <span>Am very grateful to InfiniteFx, I can earn a steady profit every day, I can get payment instantly, I can use it to pay for my doctoral tuition.. </span>
+            <h2 class="rating-name">Arvi Mattila</h2>
+            <div class="rating-box">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+              <img src="{% static 'assets/image/testimonial/ratting.png' %}" alt="img" draggable="false">
+            </div>
+            
+          </li>
+          
+        </ul>
+        <div id="left" class="i test-fa-angle-left">&#10094;</div>
+        <div id="right" class="i test-fa-angle-right">&#10095;</div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  {% include 'includes/partners.html' %}
+  {% include 'includes/footer.html' %}
+
+{% endblock %}

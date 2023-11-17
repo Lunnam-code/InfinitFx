@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Contact{% endblock %}
+
+{% block content %}  
+<style>
+    .header{
+      background: transparent;
+    }
+    .header.sticky{
+      background-color: #fff;
+      color: #2f2f2f;
+      padding-bottom: 10px;
+    }
+    .main-menu{
+      background-color: transparent; 
+      color: #fff;
+
+    }
+    .header.sticky > .main-menu{
+      background-color: transparent; 
+      color:inherit
+
+    } 
+    .header.sticky > .main-menu .main-menu-item ul li a{
+      color:#2f2f2f;
+      padding: 0;
+      position: relative;
+      transition: all 0.5s ease;
+      background-color: none;
+    }
+    .header.sticky > .main-menu .main-menu-item ul li a:hover{
+      background-color: #fff;
+    }
+    .partners-containers{
+      border-top: 1px solid #2f2f2f;
+    }
+    @media (max-width:767px){
+      .main-menu-item ul{
+        color: #2f2f2f;
+      }
+      .watermark{
+        font-size: 100px;
+        top:59%;
+      }
+      .b-contact-title{
+        font-size: 30px;
+      }
+    }
+    @media (max-width:500px){
+      .main-menu-item ul{
+        color: #2f2f2f;
+      }
+      .watermark{
+        font-size: 70px;
+        top:59%;
+      }
+      .b-contact-title{
+        font-size: 20px;
+      }
+    }
+  </style>
+
+  {% include 'includes/header.html' %}
+
+    <!-- Breadcrumbs Start -->
+    
+
+    <div class="breadcrumbs-container">
+      <div class="breadcrumbs">
+        <img src="{% static 'assets/image/breadcrumbs/inr_10.jpg' %}">
+        <div class="b-contact-details">
+          <h2 class="b-contact-title">Frequently Asked Questions</h2>
+        </div>
+        
+        <h2 class="watermark" style="overflow-x: auto;">Frequently</h2>
+      </div>
+    </div>
+    
+    <!-- Breadcrumbs End -->
+  
+    <!-- frequently asked question starts  -->
+    <div class="frequently-container">
+      <div class="freq-container">
+  
+        <div class="fleq-item">
+          <div class="fleq-header">
+            <h3 draggable="false">How can I invest with InfiniteFx?</h3>
+            <div class="freq-toggle">
+              <p class="freq-one" draggable="false">-</p>
+              <p class="freq-two" draggable="false">-</p>
+            </div>
+          </div>
+          <div class="freq-body hidden">
+            <p>To make a investment you must first become a member of Global Alliance Sec . Once you are signed up, you can make your first deposit. All deposits must be made through the Members Area. You can login using the member username and password you receive when signup.</p>
+          </div>
+        </div>
+        
+        <div class="fleq-item">
+          <div class="fleq-header">
+            <h3 draggable="false">How do I open InfiniteFX Account?</h3>
+            <div class="freq-toggle">
+              <p class="freq-one" draggable="false">-</p>
+              <p class="freq-two" draggable="false">-</p>
+            </div>
+          </div>
+          <div class="freq-body hidden">
+            <p>It's quite easy and convenient. Follow this <a href="{% url 'register' %}" style="color:blue;">link</a>, fill in the registration form and then press "Register".</p>
+          </div>
+        </div>
+  
+        <div class="fleq-item">
+          <div class="fleq-header">
+            <h3 draggable="false">How can I withdraw funds?</h3>
+            <div class="freq-toggle">
+              <p class="freq-one" draggable="false">-</p>
+              <p class="freq-two" draggable="false">-</p>
+            </div>
+          </div>
+          <div class="freq-body hidden">
+            <p> <a href="{% url 'login' %}" style="color:blue;">Login</a> to your account using your username and password and check the Withdraw section.</p>
+          </div>
+        </div>
+  
+        <div class="fleq-item">
+          <div class="fleq-header">
+            <h3 draggable="false">How can I change my e-mail or password?</h3>
+            <div class="freq-toggle">
+              <p class="freq-one" draggable="false">-</p>
+              <p class="freq-two" draggable="false">-</p>
+            </div>
+          </div>
+          <div class="freq-body hidden">
+            <p> Log into your InfiniteFx account and click on the "Account Information". You can change your password there but you can't change your e-mail address.</p>
+          </div>
+        </div>
+  
+        <div class="fleq-item">
+          <div class="fleq-header">
+            <h3 draggable="false">I have trouble during registering, What shall I do?</h3>
+            <div class="freq-toggle">
+              <p class="freq-one" draggable="false">-</p>
+              <p class="freq-two" draggable="false">-</p>
+            </div>
+          </div>
+          <div class="freq-body hidden">
+            <p> Check the right of the entered information. Displayed errors can help you, they show where you have made mistakes. Sometimes it could be browser issue. Try to change your browser or turn off any translator if you use it. If you need further assistance don't hesitate to contact us.</p>
+          </div>
+        </div>
+  
+        <div class="fleq-item">
+          <div class="fleq-header">
+            <h3 draggable="false">May I change my login data?</h3>
+            <div class="freq-toggle">
+              <p class="freq-one" draggable="false">-</p>
+              <p class="freq-two" draggable="false">-</p>
+            </div>
+          </div>
+          <div class="freq-body hidden">
+            <p> 
+              You may change your password by clicking the link setting in the navigation menu (you need to be logged into your account first).
+              In order to change your payment accounts data you need to contact our support service.</p>
+          </div>
+        </div>
+  
+        <div class="fleq-item">
+          <div class="fleq-header">
+            <h3 draggable="false">May I have several deposits at the same time?</h3>
+            <div class="freq-toggle">
+              <p class="freq-one" draggable="false">-</p>
+              <p class="freq-two" draggable="false">-</p>
+            </div>
+          </div>
+          <div class="freq-body hidden">
+            <p> 
+              Yes, sure you may have as many deposits as you want.</p>
+          </div>
+        </div>
+  
+        <div class="fleq-item">
+          <div class="fleq-header">
+            <h3 draggable="false">May I open several accounts at the same time?</h3>
+            <div class="freq-toggle">
+              <p class="freq-one" draggable="false">-</p>
+              <p class="freq-two" draggable="false">-</p>
+            </div>
+          </div>
+          <div class="freq-body hidden">
+            <p> 
+              No. If we find that one member has more than one account, the entire funds will be frozen.</p>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  
+  <script>
+  // Get all elements with class .fleq-header
+  const headers = document.querySelectorAll('.fleq-header');
+  
+  // Iterate over each header element and add click event listener
+  headers.forEach(header => {
+    header.addEventListener('click', function() {
+      // Find the associated body element
+      const body = this.nextElementSibling;
+  
+      // Toggle the 'hidden' class to show/hide the body element
+      body.classList.toggle('hidden');
+  
+      const freqToggle = this.querySelector('.freq-toggle');
+      freqToggle.querySelector('.freq-two').classList.toggle('hidden');
+    });
+  });
+  
+  
+  
+  
+  
+    
+  </script>
+  
+
+  {% include 'includes/partners.html' %}
+  <!-- Footer Start -->
+  {% include 'includes/footer.html' %}
+  <!-- Footer End -->
+
+{% endblock %}

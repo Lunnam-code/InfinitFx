@@ -1,0 +1,129 @@
+{% extends 'accounts/dashboardpages/dashbase.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Make Deposite{% endblock %}
+{% block content %}
+
+<div class="invest-plan">
+
+  <div class="plan-category">
+    <div class="header-category">
+      <h2>Standard</h2>
+      <p><Span>5%</Span>/After 12 Hours</p>
+    </div>
+    <div class="body-category">
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Minimum:$50</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Maximum:$300</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Automatic Withdrawal</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">24x7 Support</p>
+    </div>
+    <div class="body-button">
+      <button class="btn btn1 btn-set-range" data-min="50" data-max="300">Select Now</button>
+    </div>
+  </div>
+  <div class="plan-category">
+    <div class="header-category">
+      <h2>Business</h2>
+      <p><Span>9%</Span>/After 24 Hours</p>
+    </div>
+    <div class="body-category">
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Minimum:$300</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Maximum:$1000</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Automatic Withdrawal</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">24x7 Support</p>
+    </div>
+    <div class="body-button">
+      <button class="btn btn2 btn-set-range" data-min="300" data-max="1000">Select Now</button>
+    </div>
+  </div>
+  <div class="plan-category">
+    <div class="header-category">
+      <h2>Professional</h2>
+      <p><Span>13%</Span>/After 48 Hours</p>
+    </div>
+    <div class="body-category">
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Minimum:$2000</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Maximum:$5000</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Automatic Withdrawal</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">24x7 Support</p>
+    </div>
+    <div class="body-button">
+      <button class="btn btn3 btn-set-range" data-min="2000" data-max="5000">Select Now</button>
+    </div>
+  </div>
+  <div class="plan-category">
+    <div class="header-category">
+      <h2>Enterprise</h2>
+      <p><Span>17%</Span>/After 72 Hours</p>
+    </div>
+    <div class="body-category">
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Minimum:$5000</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Maximum:Unlimited</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">Automatic Withdrawal</p>
+      <p><img src="{% static 'assets/image/dashboard/mark.png' %}" class="mark">24x7 Support</p>
+    </div>
+    <div class="body-button">
+      <button class="btn btn4 btn-set-range" data-min="5000" data-max="100000000000000000000">Select Now</button>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- coins -->
+<div class="coin-container">
+  <div class="coins">
+    <img src="{% static 'assets/image/dashboard/coins/bitcoin.png' %}">
+    <p>$0.00</p>
+  </div>
+  <div class="coins">
+    <img src="{% static 'assets/image/dashboard/coins/bnb.png' %}">
+    <p>$0.00</p>
+  </div>
+  <div class="coins">
+    <img src="{% static 'assets/image/dashboard/coins/dogecoin.png' %}">
+    <p>$0.00</p>
+  </div>
+  <div class="coins">
+    <img src="{% static 'assets/image/dashboard/coins/etherum.png' %}">
+    <p>$0.00</p>
+  </div>
+  <div class="coins">
+    <img src="{% static 'assets/image/dashboard/coins/binance.png' %}">
+    <p>$0.00</p>
+  </div>
+</div>
+
+<!-- invest  -->
+<div class="deposit-input">
+  <form action="" method="POST" id="deposit-form" class="deposit-input-container">
+    {% csrf_token %}
+    <div class="payment-input">
+      <P>Deposit Amount </P><label for="amount1">Dollar ($):</label><input type="number" name="amount" id="amount1" min="50" max="10000000000" value="" class="input-field">
+    </div>
+    <div class="payment-input">
+      <p>Payment Method</p><label for="radio1">Bitcoin:</label><input type="radio" name="radio" id="radio1" checked value="" class="radio">
+    </div>
+    <button type="submit" class="invest-btn" value="Invest">Invest</button>
+  </form>
+</div>
+
+<script>
+  $(document).on('submit', '#deposit-fom', function(e){
+    e.preventDefault();
+    $('.invest-btn').text('Processing');
+
+    $.ajax({
+      type: 'POST',
+      url: "{% url 'deposite' %}",
+      data: {
+        amount: $('#amount1').val(),
+        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success:function(response){
+        console.log('submitted');
+      }
+    });
+  })
+</script>
+
+{% endblock %}

@@ -1,0 +1,463 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Create Account{% endblock %}
+
+{% block content %}
+
+  
+
+{% include 'includes/header2.html' %}
+
+<div class="rl-container">
+  <div class="rl-content">
+      <div class="rl-title">
+          <h2 class="rl-title">
+             Create Account
+         </h2>
+     </div>
+     <div id="error-message" style="margin-bottom:1.5rem; color:#dc3545; text-align:center"></div>
+     <div class="">
+      <form action="" method="POST" name="regform" class="form">
+        {% csrf_token %}
+        <div class="form-group-item">
+          <input type="text" class="input" name="fname" id="fname" placeholder="Enter Your First Name" required>
+        </div>
+        <div class="form-group-item">
+          <input type="text" class="input" name="lname" id="lname" placeholder="Enter Your Last Name" required>
+        </div>
+        <div class="form-group-item">
+          <input type="text" class="input" name="username" id="username" value="" placeholder="Username" required>
+        </div>
+        <div class="form-group-item">
+          <input type="email" class="input" name="email" id="email" placeholder="example@gmail.com" required>
+        </div>
+
+        <div class="form-group-item">
+					<input type="email" class="input" name="email1" value="" placeholder="Retype Your E-mail" required>
+				</div>
+        <div class="form-group-item password">
+					<input type="password" class="input" name="password" value="" id="password" placeholder="Password" required>
+				</div>
+				
+				<div class="form-group-item password">
+					<input type="password" class="input" name="password2" value="" id="password2" placeholder="Retype Password" required>
+				</div>
+
+        <div class="form-group-item">
+					  <select name="country" id="country" name="country" class=inpts>
+              <option value="">Choose Your Country</option>
+              <option >United States</option>
+              <option >Afghanistan</option>
+              <option >Albania</option>
+              <option >Algeria</option>
+              <option >American Samoa</option>
+              <option >Andorra</option>
+              <option >Angola</option>
+              <option >Anguilla</option>
+              <option >Antarctica</option>
+              <option >Antigua and Barbuda</option>
+              <option >Argentina</option>
+              <option >Armenia</option>
+              <option >Aruba</option>
+              <option >Australia</option>
+              <option >Austria</option>
+              <option >Azerbaidjan</option>
+              <option >Bahamas</option>
+              <option >Bahrain</option>
+              <option >Bangladesh</option>
+              <option >Barbados</option>
+              <option >Belarus</option>
+              <option >Belgium</option>
+              <option >Belize</option>
+              <option >Benin</option>
+              <option >Bermuda</option>
+              <option >Bhutan</option>
+              <option >Bolivia</option>
+              <option >Bosnia-Herzegovina</option>
+              <option >Botswana</option>
+              <option >Bouvet Island</option>
+              <option >Brazil</option>
+              <option >British Indian Ocean Territory</option>
+              <option >Brunei Darussalam</option>
+              <option >Bulgaria</option>
+              <option >Burkina Faso</option>
+              <option >Burundi</option>
+              <option >Cambodia</option>
+              <option >Cameroon</option>
+              <option >Canada</option>
+              <option >Cape Verde</option>
+              <option >Cayman Islands</option>
+              <option >Central African Republic</option>
+              <option >Chad</option>
+              <option >Chile</option>
+              <option >China</option>
+              <option >Christmas Island</option>
+              <option >Cocos (Keeling) Islands</option>
+              <option >Colombia</option>
+              <option >Comoros</option>
+              <option >Congo</option>
+              <option >Congo (Democratic Republic)</option>
+              <option >Cook Islands</option>
+              <option >Costa Rica</option>
+              <option >Croatia</option>
+              <option >Cuba</option>
+              <option >Cyprus</option>
+              <option >Czech Republic</option>
+              <option >Denmark</option>
+              <option >Djibouti</option>
+              <option >Dominica</option>
+              <option >Dominican Republic</option>
+              <option >East Timor</option>
+              <option >Ecuador</option>
+              <option >Egypt</option>
+              <option >El Salvador</option>
+              <option >Equatorial Guinea</option>
+              <option >Eritrea</option>
+              <option >Estonia</option>
+              <option >Ethiopia</option>
+              <option >Falkland Islands</option>
+              <option >Faroe Islands</option>
+              <option >Fiji</option>
+              <option >Finland</option>
+              <option >France</option>
+              <option >France (European Territory)</option>
+              <option >French Guiana</option>
+              <option >French Southern Territories</option>
+              <option >Gabon</option>
+              <option >Gambia</option>
+              <option >Georgia</option>
+              <option >Germany</option>
+              <option >Ghana</option>
+              <option >Gibraltar</option>
+              <option >Great Britain</option>
+              <option >Greece</option>
+              <option >Greenland</option>
+              <option >Grenada</option>
+              <option >Guadeloupe</option>
+              <option >Guam</option>
+              <option >Guatemala</option>
+              <option >Guinea</option>
+              <option >Guinea Bissau</option>
+              <option >Guyana</option>
+              <option >Haiti</option>
+              <option >Heard and McDonald Islands</option>
+              <option >Holy See (Vatican City State)</option>
+              <option >Honduras</option>
+              <option >Hong Kong</option>
+              <option >Hungary</option>
+              <option >Iceland</option>
+              <option >India</option>
+              <option >Indonesia</option>
+              <option >Iran</option>
+              <option >Iraq</option>
+              <option >Ireland</option>
+              <option >Israel</option>
+              <option >Italy</option>
+              <option >Ivory Coast (Cote D`Ivoire)</option>
+              <option >Jamaica</option>
+              <option >Japan</option>
+              <option >Jordan</option>
+              <option >Kazakhstan</option>
+              <option >Kenya</option>
+              <option >Kiribati</option>
+              <option >Kuwait</option>
+              <option >Kyrgyz Republic (Kyrgyzstan)</option>
+              <option >Laos</option>
+              <option >Latvia</option>
+              <option >Lebanon</option>
+              <option >Lesotho</option>
+              <option >Liberia</option>
+              <option >Libya</option>
+              <option >Liechtenstein</option>
+              <option >Lithuania</option>
+              <option >Luxembourg</option>
+              <option >Macau</option>
+              <option >Macedonia</option>
+              <option >Madagascar</option>
+              <option >Malawi</option>
+              <option >Malaysia</option>
+              <option >Maldives</option>
+              <option >Mali</option>
+              <option >Malta</option>
+              <option >Marshall Islands</option>
+              <option >Martinique</option>
+              <option >Mauritania</option>
+              <option >Mauritius</option>
+              <option >Mayotte</option>
+              <option >Mexico</option>
+              <option >Micronesia</option>
+              <option >Moldavia</option>
+              <option >Monaco</option>
+              <option >Mongolia</option>
+              <option >Montserrat</option>
+              <option >Morocco</option>
+              <option >Mozambique</option>
+              <option >Myanmar</option>
+              <option >Namibia</option>
+              <option >Nauru</option>
+              <option >Nepal</option>
+              <option >Netherlands</option>
+              <option >Netherlands Antilles</option>
+              <option >New Caledonia</option>
+              <option >New Zealand</option>
+              <option >Nicaragua</option>
+              <option >Niger</option>
+              <option >Nigeria</option>
+              <option >Niue</option>
+              <option >Norfolk Island</option>
+              <option >North Korea</option>
+              <option >Northern Mariana Islands</option>
+              <option >Norway</option>
+              <option >Oman</option>
+              <option >Pakistan</option>
+              <option >Palau</option>
+              <option >Panama</option>
+              <option >Papua New Guinea</option>
+              <option >Paraguay</option>
+              <option >Peru</option>
+              <option >Philippines</option>
+              <option >Pitcairn Island</option>
+              <option >Poland</option>
+              <option >Polynesia</option>
+              <option >Portugal</option>
+              <option >Puerto Rico</option>
+              <option >Qatar</option>
+              <option >Reunion</option>
+              <option >Romania</option>
+              <option >Russian Federation</option>
+              <option >Rwanda</option>
+              <option >S. Georgia &amp; S. Sandwich Isls.</option>
+              <option >Saint Helena</option>
+              <option >Saint Kitts &amp; Nevis Anguilla</option>
+              <option >Saint Lucia</option>
+              <option >Saint Pierre and Miquelon</option>
+              <option >Saint Vincent &amp; Grenadines</option>
+              <option >Samoa</option>
+              <option >San Marino</option>
+              <option >Sao Tome and Principe</option>
+              <option >Saudi Arabia</option>
+              <option >Senegal</option>
+              <option >Seychelles</option>
+              <option >Sierra Leone</option>
+              <option >Singapore</option>
+              <option >Slovak Republic</option>
+              <option >Slovenia</option>
+              <option >Solomon Islands</option>
+              <option >Somalia</option>
+              <option >South Africa</option>
+              <option >South Korea</option>
+              <option >Spain</option>
+              <option >Sri Lanka</option>
+              <option >Sudan</option>
+              <option >Suriname</option>
+              <option >Svalbard and Jan Mayen Islands</option>
+              <option >Swaziland</option>
+              <option >Sweden</option>
+              <option >Switzerland</option>
+              <option >Syria</option>
+              <option >Taiwan</option>
+              <option >Tajikistan</option>
+              <option >Tanzania</option>
+              <option >Thailand</option>
+              <option >Togo</option>
+              <option >Tokelau</option>
+              <option >Tonga</option>
+              <option >Trinidad and Tobago</option>
+              <option >Tunisia</option>
+              <option >Turkey</option>
+              <option >Turkmenistan</option>
+              <option >Turks and Caicos Islands</option>
+              <option >Tuvalu</option>
+              <option >USA Minor Outlying Islands</option>
+              <option >Uganda</option>
+              <option >Ukraine</option>
+              <option >United Arab Emirates</option>
+              <option >United Kingdom</option>
+              <option >Uruguay</option>
+              <option >Uzbekistan</option>
+              <option >Vanuatu</option>
+              <option >Venezuela</option>
+              <option >Vietnam</option>
+              <option >Virgin Islands (British)</option>
+              <option >Virgin Islands (USA)</option>
+              <option >Wallis and Futuna Islands</option>
+              <option >Weather Stations</option>
+              <option >Western Sahara</option>
+              <option >Yemen</option>
+              <option >Yugoslavia</option>
+              <option >Zaire</option>
+              <option >Zambia</option>
+              <option >Zimbabwe</option>
+				    </select>
+			  </div>
+
+        <div class="form-group-item">
+					<input type="text" class="input" name="pay_account[48]" value="" id="pay_account" data-validate="regexp" data-validate-regexp="^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$" data-validate-notice="Bitcoin Address" placeholder="Your Bitcoin Wallet">
+				</div>
+				
+        <div class="form-group-item rl-check">
+			    <input class="check" id="agree" type=checkbox name="agree" value="1" required > I agree with <a href="policy.html">Terms and conditions</a>
+			  </div>
+				
+        <div class="form-group-item" style="display: flex; justify-content: center; align-items:center;">
+          <button type="submit" class="btn">Signup</button>
+        </div>
+
+          <div class="form-group-item">Already have an<a href="{% url 'login' %}"> Account?
+          </div>
+      </form>
+  </div>
+  </div>
+
+  <script  language=javascript>
+    function checkform(){
+      if (document.regform.fname.value == ''){
+        alert("please enter  your first name!");
+        document.regform.fname.focus();
+        return false
+      }
+      if (document.regform.lname.value == ''){
+        alert("please enter  your last name!");
+        document.regform.lname.focus();
+        return false
+      }
+      if (!document.regform.username.value.match(/^[A-Za-z0-9_\-]+$/)) {
+        alert("For username you should use English letters and digits only!");
+        document.regform.username.focus();
+        return false;
+      }
+      if (document.regform.email.value != document.regform.email1.value) {
+        alert("Please retype your e-mail!");
+        document.regform.email.focus();
+        return false;
+      }
+      if (document.regform.password.value != document.regform.password2.value) {
+        alert("Please check your password!");
+        document.regform.password2.focus();
+        return false;
+      }
+      if (document.regform.agree.checked == false) {
+        alert("You have to agree with the Terms and Conditions!");
+        document.regform.password2.focus();
+        return false;
+      }
+      
+      // If all checks pass, return true
+      return true;
+    }
+  
+  </script>
+</div>
+
+
+<script>
+var redirect_url = "{% url 'login' %}"
+$(document).on('submit','.form', function(e){
+  e.preventDefault();
+  $('.btn').text('Processing...');
+
+  // Check the form validity
+  var isValid = checkform();
+
+  // If form is not valid, terminate the AJAX request
+  if (!isValid) {
+    $('.btn').text('Signup');
+    return;
+  }
+
+
+  $.ajax({
+    type: 'POST',
+    url : "{% url 'register' %}",
+    data: {
+      fname: $('#fname').val(),
+      lname: $('#lname').val(),
+      username: $('#username').val(),
+      email: $('#email').val(),
+      password: $('#password').val(),
+      country: $('#country').val(),
+      pay_account: $('#pay_account').val(),
+      agree: $('#agree').val(),
+      csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+    },
+    success: function(response){
+      if (response.success) {
+        window.location.href = redirect_url;
+      } else{
+        if (response.error_code ==='Email_exist'){
+          $('#error-message').text('Email Already exist.');
+          $('#email').val('');
+          $('#email1').val('');
+          $('.btn').text('Signup');
+        } else if (response.error_code === 'Username_taken'){
+          $('#error-message').text('Username have been taken.');
+          $('#username').val('');
+          $('.btn').text('Signup');
+        }
+      }
+    }
+    
+  });
+
+
+});
+</script>
+
+<style>
+  header .topbar-area{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  .top-container{
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+  .register-header-logo{
+    width: 120px;
+  }
+  .register-form{
+    width: 80%;
+  }
+  .register-form .input,
+  .register-form select{
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .check{
+    width: 30px;
+  }
+  .form-group-item{
+    width: 100%;
+    position: relative;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .form-group-item i{
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    right: 1%;
+  }
+  .form-group-item button{
+    border: none;
+    background: #015ec5;
+    color: #015ec5;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    width: 30%;
+  }
+</style>
+{% include 'includes/footer.html' %}
+{% endblock %}

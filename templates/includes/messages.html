@@ -1,0 +1,43 @@
+{% if messages %}
+
+    {% for message in messages %}
+        <div id="message" class="container">
+            <div class="alert {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}alert-danger{% else %}alert-success{% endif %}" alert-disable role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+
+                <strong>
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        ERROR:
+                    {% else %}
+                        {{message.tags|title}}:
+                    {% endif %}
+                </strong>
+                {{message}}
+            </div>
+            <style>
+                .alert-success {
+                    color: #155724;
+                    background-color: #d4edda;
+                    border-color: #c3e6cb;
+                }
+                
+                .alert-danger {
+                    color: #721c24;
+                    background-color: #f8d7da;
+                    border-color: #f5c6cb;
+                }
+                
+            </style>
+            <script>
+                function closeMessage(closeButton) {
+                    // Find the parent element of the close button, which is the alert div
+                    var alertDiv = closeButton.parentElement;
+            
+                    // Hide the alert div
+                    alertDiv.style.display = 'none';
+                }
+            </script>
+        </div>
+    {% endfor %}
+
+{% endif %}

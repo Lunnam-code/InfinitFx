@@ -1,0 +1,47 @@
+{% load static %}
+
+
+<!-- Footer Start -->
+  <!-- footer section starts  -->
+  <footer class="footer">
+    <div class="footer-items">
+      <div class="footer-item">
+        <div class="footer-logo">
+          <img src="{% static 'assets/image/logo.png' %}" alt="">
+        </div>
+        <p class="footer-desc">We have specialized personnel to provide the best service and make your stay with us be of your total satisfaction.</p>
+      </div>
+      <div class="footer-item">
+        <div class="footer-logo">
+          <h2 class="footer-title">OVERVIEW</h2>
+        </div>
+        <ul>
+          <li><a href="{% url 'index' %}" class="footer-a">Home</a></li>
+          <li><a href="{% url 'about' %}" class="footer-a">About Us</a></li>
+          <li><a href="{% url 'policy' %}" class="footer-a">Privacy & Policy</a></li>
+          <li><a href="{% url 'support' %}" class="footer-a">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-item">
+        <div class="footer-logo">
+          <h2 class="footer-title">CONTACT INFO</h2>
+        </div>
+        <ul>
+          <li class="footer-link">
+            <img src="{% static 'assets/image/footer/location.png' %}" class="footer-icon">
+            <p class="footer-p">101 Whitechapel High St, London E1 7RA, United Kingdom</p>
+          </li>
+          <li class="footer-link">
+            <img src="{% static 'assets/image/footer/mail.png' %}" class="footer-icon">
+            <p class="footer-p">InfiniteFx@gmail.com</p>
+          </li>
+          <li class="footer-link">
+            <img src="{% static 'assets/image/footer/timer.png' %}" class="footer-icon">
+            <p class="footer-p">Office Hours: 8AM - 5PM</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  
+<!-- Footer End -->

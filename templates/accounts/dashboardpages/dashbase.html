@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'assets/dashboard.css' %}">
+</head>
+<body style="background-color: #ebebeb;">
+  <div class="main">
+
+    {% include 'accounts/dashboardpages/dashheader.html' %}
+
+    <div class="body-container">
+      <div class="container-item">
+        
+        {% block content %}
+
+        {% endblock %}
+        
+        <div class="footer-dashboard">
+          <div class="">
+            <div class="dash-footer">
+                <p>© 2021 InfiniteFxForexSoultion. All Rights Reserved.</p>
+            </div>
+        </div>
+         </div>
+        </div>
+      </div>
+  
+    </div>
+  
+    <script src="{% static 'assets/dashjs/scripts.js' %}"></script>
+  </body>
+  </html>

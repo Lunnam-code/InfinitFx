@@ -1,0 +1,36 @@
+{% extends 'accounts/dashboardpages/dashbase.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Complete Transaction{% endblock %}
+{% block content %}
+
+
+<div class="invest-container">
+  <div class="invest-item">
+    <h2>Deposit Confirmation:</h2>
+    <p><span>Plan:</span><span>{{ plan_name }}</span></p>
+    <p><span>Profit:</span><span>{{ profit_percentage }} After {{ plan_duration }} Hours</span></p>
+    <p><span>Principal Return:</span><span>Yes</span></p>
+    <p><span>Principal Withdraw:</span><span>Not Available</span></p>
+    <p><span>Amount:</span><span>${{ amount }}.00</span></p>
+    <p><span>Amount In BTC:</span><span>{{ bitcoin_equivalent }}</span></p>
+    <div class="btc-address">
+      <img src="{% static 'assets/image/dashboard/btc-address.png' %}">
+      <div class="btc-wallet">
+      
+      <p>Send {{ bitcoin_equivalent }}BTC to the address below:  </p>
+       <p> &nbsp;bc1qvjwxrjseje9z2yd3hdfw5kp7r2vzhxdjxfnzxu</p></div>
+
+       <form action="{% url 'invest' %}" method="POST">
+        <input type="hidden" name="amount" value="{{amount}}" > 
+        {% csrf_token %}
+        <div style="display:flex; justify-content:center; margin-top:20px" class="btc-wallet-1">
+        <button type="submit" class="btn">Complete Transaction</button>
+        </div>
+      </form> 
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

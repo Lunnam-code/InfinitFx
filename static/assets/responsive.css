@@ -1,0 +1,248 @@
+@media (max-width:981px){
+  html{
+    font-size: 80%;
+  }
+  .top-bar{
+    display: none !important;
+  } 
+  .header{
+    height: 50px;
+  }
+  .slidershow-container{
+    padding-top: 50px;
+  }
+  .overlay{
+    top: 50px;
+  }
+  .text h2{
+    font-size: 50px;
+  }
+  .text p{
+    font-size: 30px;
+  }
+  .premium-items{
+    flex-wrap: wrap;
+  }
+  .premium-title,
+  .premium-body{
+    flex-basis: 100%;
+  }
+
+  .wrapper .carousel{
+    grid-auto-columns: calc(( 100% / 2 ) -9px);
+  }
+  .test-wrapper .test-carousel{
+    grid-auto-columns: calc(( 100% / 2 ) -9px);
+  }
+  .aboutus{
+    flex-wrap: wrap;
+  }
+  .aboutus-img,
+  .aboutus-detail{
+    flex-basis: 100%;
+  }
+  .aboutus-detail{
+    padding: 0 0 30px;
+  }
+  
+}
+@media (max-width:767px){
+  .top-bar{
+    position: relative;
+  }
+  .menu{
+    display: initial;
+  }
+  .main-menu-item ul{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    background-color: #fff;
+    top: 53px;
+    left: 0%;
+    z-index: 1000;
+    width: 80%;
+    transition: all .3s ease-in-out;
+  }
+  .main-menu-item ul.active{
+    display: initial;
+    transition: all .3s ease-in-out;
+  }
+  .main-menu-item ul li{
+    border-bottom: 1px solid #2f2f2f;
+  }
+  .main-menu-item ul li a{
+    padding: 4px;
+  }
+  .slidershow-container{
+    max-width: 100%;
+    margin: auto;
+    position: relative;
+    height: 80vh;
+  }
+
+  .mySlides{
+    display: none;
+    height: 80vh;
+  }
+  .text{
+    width:95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    right: 6%;
+    left: 6%;
+  }
+  .text h2{
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .text p{
+    font-size: 30px;
+  }
+  .service-items,
+  .price-item{
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  }
+  .price-card .plan span strong{
+    font-size: 35px;
+  }
+  .price-card .plan span small{
+    top: -100%;
+  }
+  .price-invest .btn{
+    font-size:13px;
+  }
+  .about-items{
+    flex-wrap: wrap;
+  }
+  .about-image,
+  .about-desc{
+    flex-basis: 100%;
+    padding: 0;
+  }
+}
+@media (max-width:668px){
+  .slidershow-container{
+    max-width: 100%;
+    margin: auto;
+    position: relative;
+    height: 90vh;
+  }
+  .mySlides{
+    display: none;
+    height: 90vh;
+  }  
+  .text h2{
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .text p{
+    font-size: 20px;
+  }
+  .premium-container{
+    padding: 100px 8% 100px;
+  }
+  .carousel .card{
+    width: 150px;
+    padding: 10px;
+  }
+  .test-carousel .test-card{
+    width: 150px;
+    padding: 6px;
+  }
+  .service-items,
+  .price-item{
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .price-card .plan span strong{
+    font-size: 30px;
+  }
+  .price-card .plan p{
+    font-size: 15px;
+  }
+  .footer-items{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .footer-title{
+    padding-top: 20px;
+  }
+
+  /* address  */
+  .address-item{
+    flex-wrap:wrap;
+    flex-shrink: 0;
+  }
+  .address-items-left,
+  .address-items-right{
+    flex-basis: 100%;
+  }
+  .form-item-left{
+    display:none
+  }
+  .form-item-right{
+    flex-basis: 100%;
+  }
+}
+@media (max-width:400px){
+  .slidershow-container{
+    max-width: 100%;
+    margin: auto;
+    position: relative;
+    height: 100vh;
+  }
+  .mySlides{
+    display: none;
+    height: 100vh;
+  }
+  .wrapper .carousel{
+    grid-auto-columns: 100%;
+  }
+  .carousel .card{
+    width: 300px;
+    padding: 10px;
+  }
+  .test-wrapper .test-carousel{
+    grid-auto-columns: 100%;
+    gap: 6px;
+  }
+  .test-carousel .test-card{
+    width: 300px;
+    padding: 10px;
+  }
+  .btn{
+    font-size: 11px;
+    padding: 10px 6px;
+  }
+  .service-items,
+  .price-item{
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .price-card .plan span strong{
+    font-size: 30px;
+  }
+  .price-card .plan p{
+    font-size: 15px;
+  }
+  .footer-items{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .footer-title{
+    padding-top: 20px;
+  }
+}
+@media (max-width:300px){
+  html{
+    font-size: 70%
+  }
+}

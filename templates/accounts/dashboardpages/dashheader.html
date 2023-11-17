@@ -1,0 +1,93 @@
+{% load static %}
+
+<div class="side-menu">
+  <div class="menu" id="menu">
+    <img src="{% static 'assets/image/dashboard/menu-button-of-three-horizontal-lines.png' %}" class="dashboard-icon-menu" alt="Menu">
+  </div>
+
+  <div class="side-menu-items-container">
+    <div class="side-menu-items">
+      <a href="{% url 'dashboard' %}">
+        <img src="{% static 'assets/image/dashboard/home.png' %}" class="side-menu-icon">
+        <span class="side-menu-span">Home</span>
+      </a>
+    </div>
+
+    <div class="side-menu-items">
+      <a href="{% url 'deposite' %}">
+        <img src="{% static 'assets/image/dashboard/deposit.png' %}" class="side-menu-icon">
+        <span class="side-menu-span">Make Deposit</span>
+      </a>
+    </div>
+    
+    <div class="side-menu-items">
+      <a href="{% url 'withdraw' %}">
+        <img src="{% static 'assets/image/dashboard/withdrawal.png' %}" class="side-menu-icon">
+        <span class="side-menu-span">Withdraw</span>
+      </a>
+    </div>
+    <div class="side-menu-items">
+      <a href="#deposit">
+        <img src="{% static 'assets/image/dashboard/deposite-list.png' %}" class="side-menu-icon">
+        <span class="side-menu-span">Deposit List</span>
+      </a>
+    </div>
+    <div class="side-menu-items">
+      <a href="#">
+        <img src="{% static 'assets/image/dashboard/bank-account.png' %}" class="side-menu-icon">
+        <span class="side-menu-span">Account History</span>
+      </a>
+    </div>
+    <div class="side-menu-items">
+      <a href="#">
+        <img src="{% static 'assets/image/dashboard/referral.png' %}" class="side-menu-icon">
+        <span class="side-menu-span">Referrals</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<header class="header">
+  <nav>
+    <div class="logo" id="logo">
+      <a href="{% url 'index' %}"><img src="{% static 'assets/image/logo.png' %}"class="dashboard-logo"  alt="logo"></a>
+    </div>
+    <!-- <div class="logo" id="logo">
+        <p>IFF<span>Soultion</span></p>
+      </a>
+    </div> -->
+    
+    <div class="profile-message" id="profile-image">
+      <a href="#"><img src="{% static 'assets/image/dashboard/bell.png' %}" class="dashboard-icon mess" alt="Message">
+        <p class="count">3</p>
+      <p class="tooltips">Notification</p>
+      </a>
+    </div>
+    <div class="profile-message" id="profile-image">
+      <a href="#"><img src="{% static 'assets/image/dashboard/email.png' %}" class="dashboard-icon mess" alt="Message">
+        <p class="count">2</p>
+      <p class="tooltips">Chats</p>
+      </a>
+    </div>
+    <div class="profile-image" id="profile-image">
+      <a class="prof-link"><img src="{% static 'assets/image/dashboard/user.png' %}" class="dashboard-icon profi" alt="profile Image" class="profile-img">
+        <p>Nnamdi</p>
+      </a>
+      <ul class="profile-item">
+        <li><a href="#">
+          <img src="{% static 'assets/image/dashboard/user1.png' %}" alt="">
+          <span>Profile</span>
+        </a></li>
+        <li><a href="index.html">
+          <img src="{% static 'assets/image/dashboard/setting.png' %}" alt="">
+          <span>Setting</span>
+        </a></li>
+        <li><a href="#">
+          <img src="{% static 'assets/image/dashboard/power-off.png' %}" alt="">
+          <span>Logout</span>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+</header>

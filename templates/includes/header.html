@@ -1,0 +1,42 @@
+{% load static %}
+<!-- header  -->
+<header class="header">
+  <div class="top-bar">
+    <div class="top-left">
+      <img src="{% static 'assets/image/top-header/mail.png' %}" class="top-img">
+      <p>support@infiniteFx.com</p>
+    </div>
+    <div class="top-center">
+      <img src="{% static 'assets/image/top-header/location.png' %}" class="top-img">
+      <p>101 Whitechapel High St, London E1 7RA, United Kingdom</p>
+    </div>
+    <div class="top-right">
+      <img src="{% static 'assets/image/top-header/timer.png' %}" class="top-img">
+      <p>Monday - Friday / 8AM - 5PM</p>
+    </div>
+  </div>
+  <div class="main-menu">
+    <div class="logo">
+      <a href="{% url 'index' %}">
+      <img src="{% static 'assets/image/logo.png' %}" alt="">
+      </a>
+    </div>
+    <div class="main-menu-item">
+      <ul>
+        <li><a href="{% url 'index' %}"> Home </a></li>
+        <li><a href="{% url 'about' %}"> About </a></li>
+        <li><a href="{% url 'faq' %}"> FAQ </a></li>
+        <li><a href="{% url 'support' %}"> Contact </a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'dashboard' %}"> Dashboard </a></li>
+        {% else %}
+        <li><a href="{% url 'register' %}"> Register </a></li>
+        <li><a href="{% url 'login' %}"> Login </a></li>
+        {% endif %}
+      </ul>
+      <img src="{% static 'assets/image/menu.png' %}" class="menu">
+    </div>
+   
+  </div>
+</header>
+<!-- header end  -->

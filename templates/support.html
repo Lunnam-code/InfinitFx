@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Contact{% endblock %}
+
+{% block content %}  
+<style>
+    .header{
+      background: transparent;
+    }
+    .header.sticky{
+      background-color: #fff;
+      color: #2f2f2f;
+      padding-bottom: 10px;
+    }
+    .main-menu{
+      background-color: transparent; 
+      color: #fff;
+
+    }
+    .header.sticky > .main-menu{
+      background-color: transparent; 
+      color:inherit
+
+    } 
+    .header.sticky > .main-menu .main-menu-item ul li a{
+      color:#2f2f2f;
+      padding: 0;
+      position: relative;
+      transition: all 0.5s ease;
+      background-color: none;
+    }
+    .header.sticky > .main-menu .main-menu-item ul li a:hover{
+      background-color: #fff;
+    }
+    .partners-containers{
+      border-top: 1px solid #2f2f2f;
+    }
+    @media (max-width:767px){
+      .main-menu-item ul{
+        color: #2f2f2f;
+      }
+      .watermark{
+        font-size: 100px;
+        top:59%;
+      }
+      .b-contact-title{
+        font-size: 30px;
+      }
+    }
+    @media (max-width:500px){
+      .main-menu-item ul{
+        color: #2f2f2f;
+      }
+      .watermark{
+        font-size: 70px;
+        top:59%;
+      }
+      .b-contact-title{
+        font-size: 20px;
+      }
+    }
+  </style>
+
+  {% include 'includes/header.html' %}
+
+  <!-- Breadcrumbs Start -->
+    
+
+  <div class="breadcrumbs-container">
+    <div class="breadcrumbs">
+      <img src="{% static 'assets/image/breadcrumbs/inr_8.jpg' %}">
+      <div class="b-contact-details">
+        <h2 class="b-contact-title">Have questions - contact us</h2>
+      </div>
+      
+      <h2 class="watermark">Contact</h2>
+    </div>
+  </div>
+  
+  <!-- Breadcrumbs End -->
+
+  <div class="address-container">
+    <div class="address-item">
+      <div class="address-items-left">
+        <h2>Get in touch</h2>
+        <ul>
+          <li class="address-link">
+            <img src="{% static 'assets/image/footer/location.png' %}" class="address-icon">
+            <p class="address-p">101 Whitechapel High St, London E1 7RA, United Kingdom</p>
+          </li>
+          <li class="address-link">
+            <img src="{% static 'assets/image/footer/mail.png' %}" class="address-icon">
+            <p class="address-p">InfiniteFx@gmail.com</p>
+          </li>
+        </ul>
+      </div>
+      <div class="address-items-right">
+        <div class="contact-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.843314913288!2d-0.07437022421139614!3d51.51609051006953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb548b5bddd%3A0x8e728ebf228b06f7!2s101%20Whitechapel%20High%20St%2C%20London%20E1%207RA%2C%20UK!5e0!3m2!1sen!2sng!4v1696248040890!5m2!1sen!2sng" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- contact form  -->
+  <div class="form-container">
+    <div class="form-items">
+
+      <div class="form-item-left">
+        <img src="{% static 'assets/image/contact/office.jpg' %}" alt="">
+      </div>
+
+      <div class="form-item-right">
+        <form action="" method="POST" class="contact-form">
+          <h2>Contact Us</h2>
+          {% csrf_token %}
+          <div id="form-messages" style="margin-bottom:1.5rem; color:#198754;"></div>
+          <div id="error-message" style="margin-bottom:1.5rem; color:#dc3545; text-align:center"></div>
+          <div class="form two">
+            <input type="text" name="full_name" id="full_name"  class="form-input" placeholder="Name" required>
+            <input type="email" name="full_email" id="full_email" class="form-input" placeholder="Email" required>
+          </div>
+          <div class="form">
+            <input type="text" name="full_subject" id="full_subject" class="form-input" placeholder="Subject" required>
+          </div>
+          <div class="form">
+            <textarea name="full_message" id="full_message" cols="30" rows="10" placeholder="Message" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).on('submit','.contact-form', function(e){
+      e.preventDefault();
+      $('.btn').text('Processing...')
+
+      $.ajax({
+        type: 'POST',
+        url: "{% url 'support' %}",
+        data: {
+          full_name: $('#full_name').val(),
+          full_email: $('#full_email').val(),
+          full_subject: $('#full_subject').val(),
+          full_message: $('#full_message').val(),
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        success: function(response){
+          if (response.success){
+            $('#form-messages').text('Message Sent. We will get back to you soon!');
+            $('#full_name').val('');
+            $('#full_email').val('');
+            $('#full_subject').val('');
+            $('#full_message').val('');
+            $('.btn').text('Send Now');
+          } else {
+            if (response.error_code === 'unknown_error'){
+              $('#error-message').text('An error occurred.');
+              $('.btn').text('Send Now');
+            }
+          }
+        }
+      });
+    });
+  </script>
+
+  {% include 'includes/partners.html' %}
+<!-- Footer Start -->
+   {% include 'includes/footer.html' %}
+   <!-- Footer End -->
+
+{% endblock %}

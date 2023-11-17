@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Login{% endblock %}
+
+   {% block content %}    
+
+{% include 'includes/header2.html' %}
+
+
+<div class="rl-container">
+  <div class="rl-content">
+    <div class="rl-title">
+        <h2 class="rl-title">
+            Login To Your Account
+        </h2>
+    </div>
+    <div id="error-message" style="margin-bottom:1.5rem; color:#dc3545; text-align:center"></div>
+    <div class="login-form">
+      <form action="" method="POST" class="form">
+
+        {% csrf_token %}
+        <div class="form-group-item">
+          <input type="email" id="email" class="input" name="email" value="" placeholder="E-mail" required style="width: 100%;">
+        </div>
+        <div class="form-group-item password">
+          <input type="password" id="password" class="input" name="password" value="" placeholder="Password" required style="width: 100%;">
+        </div>
+        
+        
+        
+        <div class="form-group-item" style="display: flex; justify-content: center; align-items:center;">
+          <button type="submit" class="btn">Login</button>
+        </div>
+
+          <div class="form-group-item"> Don't have an<a href="{% url 'register' %}"> Account?</a> 
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  var redirect_url = "{% url 'index' %}"
+$(document).on('submit', '.form', function(e){
+  e.preventDefault();
+  $('.btn').text('Authenticating...');
+
+  $.ajax({
+    type: 'POST',
+    url: "{% url 'login' %}",
+    data: {
+      email: $('#email').val(),
+      password: $('#password').val(),
+      csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+    },
+    success: function(response){
+      if (response.success) {
+        console.log(response.message);
+        window.location.href = redirect_url;
+      } else{
+        if (response.error_code === 'invalid_credentials') {
+          $('#error-message').text('Invalid username or password. Please try again.');
+          $('#email').val('');
+          $('#password').val('');
+          $('.btn').text('Login');
+        } else if (response.error_code === 'unknown_error') {
+          $('#error-message').text('An unknown error occurred. Please try again later.');
+          $('#email').val('');
+          $('#password').val('');
+          $('.btn').text('Login');
+        }
+      }
+    },
+    
+    error: function(error){
+       // Handle other types of errors (e.g., network issues)
+      $('#error-message').text('An error occurred. Please try again later.');
+      $('#email').val('');
+      $('#password').val('');
+      $('.btn').text('Login');
+    }
+  })
+})
+</script>
+
+ <!-- Footer Start -->
+ {% include 'includes/footer.html' %}
+ <!-- Footer End -->
+{% endblock %}
