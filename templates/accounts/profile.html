@@ -1,0 +1,55 @@
+{% extends 'accounts/dashboardpages/dashbase.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Dashboard{% endblock %}
+{% block content %}
+
+ <!-- Account balance  -->
+ {% include 'includes/alert.html' %}
+
+ <!-- profile -->
+ <div class="profile container">
+  <form action="" method="post" class="profile-form">
+    <div class="form-container">
+      <div class="form-items">
+        <div class="form-item">
+          <label for="fname">Full Name</label>
+          <input type="text" name="fname" id="fname" value="{{ userprofile.first_name }} {{ userprofile.last_name }}" readonly>
+        </div>
+        <div class="form-item">
+          <label for="username">Username</label>
+          <input type="text" name="lname" value="{{ userprofile.username }}" id="username" readonly>
+        </div>
+      </div>
+
+      <div class="form-items">
+        <div class="form-item">
+          <label for="email">Email</label>
+          <input type="email" name="email" value="{{ userprofile.email }}" id="email" readonly>
+        </div>
+        <div class="form-item">
+          <label for="phone">Phone</label>
+          <input type="text" name="phone" value="{{ userprofile.phone_number }}" id="phone" readonly>
+        </div>
+      </div>
+      <div class="form-items">
+        
+        <div class="form-item" style="width: 100%;">
+          <label for="country">Country</label>
+          <input type="text" name="state" value="{{ userprofile.country }}" id="country" readonly >
+        </div>
+      </div>
+      <div class="form-items">
+        <div class="form-item" style="width: 100%;">
+          <label for="btc">BTC Address</label>
+          <input type="text"  id="btc" name="email" value="{{ userprofile.btc_wallet }}" readonly >
+        </div>
+        
+      </div>
+      
+
+      <p style="width:100%; text-align:center; font-size:20px; margin-top:10px;"><a href="{% url 'setting' %}" style="color: white;background-color:blue; padding: 10px;border-radius:4px; cursor:pointer">Edit Profile</a></p>
+    </div>
+  </form>
+</div>
+
+ {% endblock %}

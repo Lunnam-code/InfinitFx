@@ -27,6 +27,9 @@ def update_earnings(investment_id, start_time):
     # Check if one hour has elapsed
     if elapsed_time >= timedelta(hours=investment.maturity_duration_hour):
       percentage =  investment.deposit.amount * Decimal(interest_rate)
+      user.earning -= investment.profit
+      # user.earning += percentage
+      user.save()
       investment.profit = percentage
       investment.status = Investment.STATUS_COMPLETED
       investment.save()
@@ -40,6 +43,8 @@ def update_earnings(investment_id, start_time):
 
       investment.profit += earning_increment
       investment.save()
+      user.earning += earning_increment
+      user.save()
       pass
 
 scheduler.start()

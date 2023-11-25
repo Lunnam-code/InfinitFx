@@ -14,4 +14,11 @@ urlpatterns = [
     path('deposite/', views.deposite, name='deposite'),
     path('invest/', views.invest, name='invest'),
     path('withdraw/', views.withdraw, name='withdraw'),
+    path('investment/', views.investment, name='investment'),
+    path('profile/', views.profile, name='profile'),
+    path('setting/', views.setting, name='setting'),
+    path('profileImage/', views.profileImage, name='profileImage'),
+    path('referralfun/', views.referralfun, name='referral'),
+    path('deposit_list/', views.deposit_list, name='deposit_list'),
+    path('account_history/', views.account_history, name='account_history'),
 ]

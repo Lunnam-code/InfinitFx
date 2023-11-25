@@ -5,26 +5,38 @@
 
 
 <div class="withdraw-conatiner">
+  {% include 'includes/alert.html' %}
   <h3>Withdraw Fund:</h3>
   <div class="acc-detail">
     <div class="acc-balance">
       <p class="acc-title">Account Balance</p>
-      <p class="acc-amount"><span>$0.00</span> <img src="{% static 'assets/image/dashboard/timer.png' %}"> Updated Now</p>
+      <p class="acc-amount"><span>${{ userprofile.account_balance }}</span> <img src="{% static 'assets/image/dashboard/timer.png' %}"> Updated Now</p>
       <p class="acc-info">Your account balance</p>
     </div>
     <div class="acc-balance">
       <p class="acc-title">Pending withdrawal</p>
-      <p class="acc-amount"><span>$0.00</span><img src="{% static 'assets/image/dashboard/timer.png' %}"> Updated Now</p>
+      <p class="acc-amount"><span>${{pending_withdraw}}</span><img src="{% static 'assets/image/dashboard/timer.png' %}"> Updated Now</p>
       <p class="acc-info">Your pending withdrawal</p>
     </div>
   </div>
+  
   <div class="withdrawal-detail">
-    <label for="w-amount">Amount:</label>
-    <input type="number" name="w-amount" id="w-amount" class="w-amount">
-    <div class="acc-btn">
-      <button type="submit" class="w-btn">Request withdrawal</button>
-    </div>
-    
+    <form action="{% url 'withdraw' %}" method="POST">
+      {% csrf_token %}
+      {% if userprofile.account_balance >= 50 %}
+      <label for="w-amount">Amount:</label>
+      <input type="number" name="w-amount" id="w-amount" class="w-amount" min="50" max="{{ userprofile.account_balance }}">
+      <div class="acc-btn">
+          {% if userprofile.btc_wallet %}
+          <button type="submit" class="w-btn">Request withdrawal</button>
+          {% else %}
+          <p>Update Your BTC Wallet Address in order to make withdrawal</p>
+          {% endif %}
+      </div>
+      {% else %}
+            <p>Insufficient Fund</p>
+        {% endif %}
+    </form>
   </div>
 </div>
 

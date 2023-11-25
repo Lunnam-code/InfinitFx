@@ -8,15 +8,17 @@
         </button>
     </div>
 
-    <div id="chat_option" class="hidden">
+    <div id="chat_option" class="hidden" style="display: flex; justify-content:center; align-items:center">
         <div class="email">
             <h6>Send Email</h6>
             <img src="{% static 'assets/image/mail.png' %}" alt="">
         </div>
+        {% comment %}
         <div class="live-chat">
             <h6>Live Chat</h6>
             <img src="{% static 'assets/image/messenger.png' %}" alt="">
         </div>
+        {% endcomment %}
     </div>
 
     <div id="chat_welcome" class="hidden">

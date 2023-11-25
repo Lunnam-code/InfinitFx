@@ -1,0 +1,131 @@
+{% extends 'accounts/dashboardpages/dashbase.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Deposit List{% endblock %}
+{% block content %}
+
+ <!-- deposit list  -->
+ <div class="deposit-list-container">
+  <div class="deposit-list">
+    <div class="page-header">
+      <h3 class="page-title">
+        Your deposits
+      </h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          {% if total == 0 %}
+          <li class="breadcrumb-item">Total: $0.00</li>
+          {% else %}                
+          <li class="breadcrumb-item">Total: ${{total}}</li> 
+          {% endif %}               
+        </ol>
+      </nav>
+    </div>
+      
+    <table cellspacing=1 cellpadding=2 border=1 width=80% class=line><tr><td class=item>
+    <table cellspacing=1 cellpadding=2 border=1 width=80%><tr>
+    <td colspan=3 align=center><b>5% After 12 Hours</b></td>
+    </tr><tr>
+    <td class=inheader>Plan</td>
+    <td class=inheader width=200>Deposit Amount</td>
+    <td class=inheader width=100 nowrap><nobr> Profit (%)</nobr></td>
+    </tr>
+    <tr>
+    <td class=item>STANDARD</td>
+    <td class=item align=right>$50.00 - $300.00</td>
+    <td class=item align=right>5.00</td>
+    </tr>
+    </table>
+    <br>
+    <table cellspacing=1 cellpadding=2 border=0 width=100%><tr>
+    {% if Standard == 0 %}
+      <td colspan=4><b>No deposits for this plan</b></td>
+    {% else %}
+      <td colspan=4><b>You have deposited ${{Standard}} for this plan</b></td>
+    {% endif %}
+    </tr>           
+    </table>
+    <br>
+    </td></tr></table>
+    <br>
+    <table cellspacing=1 cellpadding=2 border=1 width=80% class=line><tr><td class=item>
+    <table cellspacing=1 cellpadding=2 border=1 width=80%><tr>
+    <td colspan=3 align=center><b>9%  AFTER 24 HOURS</b></td>
+    </tr><tr>
+    <td class=inheader>Plan</td>
+    <td class=inheader width=200>Deposit Amount</td>
+    <td class=inheader width=100 nowrap><nobr> Profit (%)</nobr></td>
+    </tr>
+    <tr>
+    <td class=item>BUSINESS</td>
+    <td class=item align=right>$300.00 - $1000.00</td>
+    <td class=item align=right>9.00</td>
+    </tr>
+    </table>
+    <br>
+    <table cellspacing=1 cellpadding=2 border=0 width=100%><tr>
+      {% if Business == 0 %}
+      <td colspan=4><b>No deposits for this plan</b></td>
+    {% else %}
+      <td colspan=4><b>You have deposited ${{Business}} for this plan</b></td>
+    {% endif %}
+    </tr>           
+    </table>
+    <br>
+    </td></tr></table>
+    <br>
+    <table cellspacing=1 cellpadding=2 border=1 width=80% class=line><tr><td class=item>
+    <table cellspacing=1 cellpadding=2 border=1 width=80%><tr>
+    <td colspan=3 align=center><b>13% AFTER 48 HOURS</b></td>
+    </tr><tr>
+    <td class=inheader>Plan</td>
+    <td class=inheader width=200>Deposit Amount</td>
+    <td class=inheader width=100 nowrap><nobr> Profit (%)</nobr></td>
+    </tr>
+    <tr>
+    <td class=item>PROFESSIONAL</td>
+    <td class=item align=right>$2000.00 - $5000.00</td>
+    <td class=item align=right>13.00</td>
+    </tr>
+    </table>
+    <br>
+    <table cellspacing=1 cellpadding=2 border=0 width=100%><tr>
+      {% if Professional == 0 %}
+      <td colspan=4><b>No deposits for this plan</b></td>
+    {% else %}
+      <td colspan=4><b>You have deposited ${{Professional}} for this plan</b></td>
+    {% endif %}
+    </tr>           
+    </table>
+    <br>
+    </td></tr></table>
+    <br>
+    <table cellspacing=1 cellpadding=2 border=1 width=80% class=line><tr><td class=item>
+    <table cellspacing=1 cellpadding=2 border=1 width=80%><tr>
+    <td colspan=3 align=center><b>17% AFTER 72 HOURS</b></td>
+    </tr><tr>
+    <td class=inheader>Plan</td>
+    <td class=inheader width=200>Deposit Amount</td>
+    <td class=inheader width=100 nowrap><nobr> Profit (%)</nobr></td>
+    </tr>
+    <tr>
+    <td class=item>ENTERPRISE</td>
+    <td class=item align=right>$5000.00 and more</td>
+    <td class=item align=right>17.00</td>
+    </tr>
+    </table>
+    <br>
+    <table cellspacing=1 cellpadding=2 border=0 width=100%><tr>
+      {% if Enterprise == 0 %}
+        <td colspan=4><b>No deposits for this plan</b></td>
+      {% else %}
+        <td colspan=4><b>You have deposited ${{Enterprise}} for this plan</b></td>
+      {% endif %}
+    </tr>           
+    </table>
+    <br>
+    </td></tr></table>
+    <br>
+  </div>
+</div>
+
+{% endblock %}

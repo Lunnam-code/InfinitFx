@@ -8,12 +8,18 @@
  <div class="header-item">
   <div class="account-info">
     <h3>Balance</h3>
-    <p><span>$2030 </span> <img src="{% static 'assets/image/dashboard/timer.png' %}" class="timer"> Updated: now</p>
-    <a href="#" class="cashout">Withdraw</a>
+    <p><span>${{ userprofile.account_balance }} </span> <img src="{% static 'assets/image/dashboard/timer.png' %}" class="timer"> Updated: now</p>
+    <a href="{% url 'withdraw' %}" class="cashout">Withdraw</a>
   </div>
   <div class="account-info">
-    <h3>Earning</h3>
-    <p><span>$30 </span><img src="{% static 'assets/image/dashboard/timer.png' %}" class="timer"> Updated: now</p>
+    <h3>Earning
+
+      <span><img src="{% static 'assets/image/dashboard/info-circle.png' %}" alt=""></span>
+      <p class="pop-info">Earning are credited to balance after Investment Period Have Elapsed</p>
+    </h3>
+    
+    <p><span>${{userprofile.earning}} </span><img src="{% static 'assets/image/dashboard/timer.png' %}" class="timer"> Updated: now</p>
+    <a href="{% url 'investment' %}" class="cashout">View More</a>
   </div>
  </div>
 
@@ -33,11 +39,13 @@
       </div>
       <div class="deposit">
         <h3>Withdrawal History</h3>
+        {% for item in withdrawal %}
         <div class="deposit-details">
-          <p>Amount: <span>$100</span></p>
-          <p>Date: <span>20/1/2023</span></p>
-          <p>Status: <span>Pending</span></p>
+          <p>Amount: <span>${{item.amount}}</span></p>
+          <p>Date: <span>{{item.status}}</span></p>
+          <p>Status: <span>{{item.created_at}}</span></p>
         </div>
+        {% endfor %}
       </div>
     </div>
  </div>

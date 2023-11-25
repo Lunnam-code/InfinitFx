@@ -157,6 +157,11 @@ header nav{
   align-items: center;
   justify-content: center;
 }
+.profile-image .prof-link img{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
 .dashboard-icon.profi{
   height: 25px;
 }
@@ -304,6 +309,34 @@ header nav{
   margin-bottom: -3px;
   height: 20px;
 }
+.account-info h3{
+  position: relative;
+}
+.account-info h3 span{
+  position: absolute;
+  top: 8%;
+  margin-left: 6px;
+}
+.account-info h3 span img{
+  width: 20px;
+}
+.account-info h3 span:hover ~ .pop-info{
+  display: initial;
+}
+.pop-info{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 200%;
+  /* margin: 0 20px; */
+  padding: 4px;
+  line-height: 1;
+  font-size: 11px;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #8d8a8a;
+  display: none;
+}
 .cashout{
   background-color: #e4c204;
   padding: 5px;
@@ -351,8 +384,12 @@ header nav{
 .deposit{
   width: 49%;
   column-gap: 10rem;
+  padding: 10px;
+}
+.deposit-details{
   border: 2px solid #e4c204;
   padding: 10px;
+  margin-top: 10px;
 }
 .deposit-details p{
   display: flex;
@@ -608,6 +645,19 @@ header nav{
   margin: 20px 0 10px 0;
 }
 
+
+/* deposit list  */
+.deposit-list-container{
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+.deposit-list{
+  width:80%
+}
+
+
+
 /* referral */
 .ref-container{
   display: flex;
@@ -626,6 +676,17 @@ header nav{
   padding: 10px;
   line-height: 30px;
 }
+.ref-link{
+  width:100%;
+  margin-bottom: 30px;
+}
+.ref-link-input{
+  width:100%;
+  padding:10px;
+  border: none;
+  border-radius:4px;
+}
+
 
 /* profile */
 .profile-form{
@@ -784,6 +845,50 @@ header nav{
   background-color: #8b2c4d;
 }
 
+/* investment  */
+.investment-body{
+  background-color: #fff;
+  width: 80%;
+  margin-bottom: 40px;
+}
+.investment-table{
+  width: 100%;
+  padding: 10px;
+}
+.investment-table .table-head tr{
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+}
+.investment-table .table-head tr th{
+  flex: 1;
+  text-align: left !important;
+}
+.investment-tbody{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.investment-tbody tr{
+  flex: 1;
+  text-align: left !important;
+}
+
+.no-investment{
+  background-color: #fff;
+  width: 80%;
+  margin: 30px 0;
+  padding: 20px;
+  height: 200px;
+  max-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.no-investment p{
+  font-size: 16px;
+  margin-bottom: 10px;
+}
 
 
 
@@ -854,6 +959,69 @@ header nav{
   border-radius: 6px;
 }
 
+
+
+
+
+/* acount-container  */
+.acount-container{
+  width:100%;
+  padding: 20px 5%;
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.account-items{
+  width:80%;
+}
+.account-card-body{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.form-group{
+  width:100%;
+  margin-top: 10px;
+}
+.form-group select{
+  padding: 5px;
+  width:100%
+}
+.form-group-item{
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+.form-group-items{
+  flex: 1;
+  border: none;
+}
+.form-group .btn{
+  width: 100%;
+  padding: 5px;
+  background-color: #015ec5;
+  border: none;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+.form-group .btn:hover{
+  background-color: #e4c204;
+}
+.form-group h6{
+  font-size: 14px;
+}
+.title h6{
+  font-size: 14px;
+}
+thead tr{
+  display: flex;
+  justify-content: space-between;
+}
+.account-card-body table{
+  width: 100%;
+}
 
 
 
@@ -1010,3 +1178,77 @@ header nav{
   }
 }
 
+/* settings  */
+/* setting  */
+.profile-picture{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.img-container{
+  display: flex;
+  justify-content: center;
+  /* background-color: #047857; */
+  position: relative;
+}
+.img-container img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.custom-file-label{
+  position: absolute;
+  display: inline-block;
+  padding: 5px 5px;
+  font-size: 12px;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 25px; /* Round shape */
+  cursor: pointer;
+  /* left: 80%; */
+  right: 20%;
+  bottom: 0;
+}
+
+.img-btn{
+  display: flex;
+  margin: 20px;
+}
+.img-btn .save{
+  padding: 10px;
+  background-color: #015ec5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.img-btn .save:hover{
+  background-color: #e4c204;
+}
+.delete{
+  padding:  10px;
+  background-color: #8b2c4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+.btc-form{
+  width: 100%;
+}
+.btc-input{
+  padding: 10px;
+  border-radius: 4px;
+}
+
+
+
+
+
+
+
+
+/* .aboutbtn:hover{
+  background-color: #e4c204;
+  color: #fff; 
+} */

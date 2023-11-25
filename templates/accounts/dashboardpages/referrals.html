@@ -1,0 +1,39 @@
+{% extends 'accounts/dashboardpages/dashbase.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Referral{% endblock %}
+{% block content %}
+
+
+<!-- referral -->
+<div class="ref-main-container" style="height: 60vh;">
+
+  <div class="ref-container">
+
+  <div class="ref-balance">
+    <p class="acc-title">Total Referrals</p>
+    <p class="acc-amount"><span>0</span> <img src="{% static 'assets/image/dashboard/timer.png' %}"> Updated Now</p>
+    <p class="acc-info">Your total referrals/p>
+  </div>
+
+  <div class="ref-balance">
+    <p class="acc-title">Active Referrals</p>
+    <p class="acc-amount"><span>0</span><img src="{% static 'assets/image/dashboard/timer.png' %}"> Updated Now</p>
+    <p class="acc-info">Your active referrals</p>
+  </div>
+
+  <div class="ref-balance">
+    <p class="acc-title">Earned Commissions</p>
+    <p class="acc-amount"><span>$0.00</span><img src="{% static 'assets/image/dashboard/timer.png' %}"> Updated Now</p>
+    <p class="acc-info">Your earned commissions</p>
+  </div>
+
+  </div>
+
+  <div class="ref-link">
+    <label for="ref-link">Your Referal Link</label>
+    <input type="text" name="ref-link" id="ref-link" value="http://127.0.0.1:8000/register?ref={{ userprofile.referral_link.link }}" readonly class="ref-link-input">
+  </div>
+</div>
+
+
+{% endblock %}

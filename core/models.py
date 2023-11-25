@@ -44,7 +44,7 @@ class Deposit(models.Model):
 
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   amount = models.PositiveIntegerField()
-  created_at = models.DateTimeField(auto_now_add=True)
+  created_at = models.DateTimeField(default=timezone.now)
   status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=PENDING)
 
   def __str__(self):
@@ -122,5 +122,23 @@ class Investment(models.Model):
   def __str__(self):
         return f"Investment for {self.user.email} - {self.deposit.amount} Plan"
 
+class Withdraw(models.Model):
+  PENDING = 'pending'
+  APPROVED = 'approved'
+  CANCELED = 'canceled'
 
+  STATUS_CHOICES = (
+    (PENDING, 'Pending'),
+    (APPROVED, 'Approved'),
+    (CANCELED, 'Canceled'),
+  )
 
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+  status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=PENDING)
+  created_at = models.DateTimeField(default=timezone.now)
+  
+  
+  def __str__(self):
+    return self.user.first_name
+  

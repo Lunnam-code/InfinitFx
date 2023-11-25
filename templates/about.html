@@ -96,7 +96,40 @@
   
             <p>We implement best practices of trading & mining of Bitcoins through our operations, while offering flexibility in our investment plans. Our company benefits from an extensive network of global clients.</p>
           </div>
-          <a href="#" class="btn">View Our Licensce</a>
+          <a href="" class="about_btn">
+            <span class="aboutbtn">View Our Licensce</span> 
+            <p>This is a Demo Project.</p>
+          </a>
+          <style>
+            .about_btn{
+              position: relative;
+            }
+            .aboutbtn{
+              padding: 10px 10px;
+              background-color: #015ec5;
+              color: #fff;
+              font-size: 18px;
+              transition: all 0.3s ease-in-out;
+            }
+            .aboutbtn:hover{
+              background-color: #e4c204;
+              color: #fff; 
+            }
+            
+            .aboutbtn:hover + p {
+              display: initial;
+            }
+            .about_btn p{
+              position: absolute;
+              bottom: -250%;
+              background-color: gray;
+              padding: 2px;
+              margin-left: 19px;
+              width: 100px;
+              display: none;
+            }
+            
+          </style>
         </div>
       </div>
     </div>

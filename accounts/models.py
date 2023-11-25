@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.utils import timezone
+from referral_system.models import Referral, ReferralLink
 
 
 
@@ -41,6 +42,7 @@ class MyAccountManager(BaseUserManager):
     return user
 
 
+
 class User(AbstractBaseUser, PermissionsMixin):
   CLIENT = 'client'
   AGENT = 'agent' 
@@ -57,14 +59,19 @@ class User(AbstractBaseUser, PermissionsMixin):
   last_name     = models.CharField(max_length=50)
   username      = models.CharField(max_length=50, unique=True)
   email         = models.EmailField(unique=True)
-  account_balance =models.DecimalField(max_digits=10, decimal_places=2)
+  account_balance =models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
   phone_number  = models.CharField(max_length=50)
-  profile_image         = models.ImageField(blank=True, upload_to='images/users/')
+  profile_image         = models.ImageField(blank=True, null=True, upload_to='images/users/')
   role          = models.CharField(max_length=30, choices=ROLES_CHOICES, default=CLIENT)
-  country       = models.CharField(max_length=50, blank=True)
+  country       = models.CharField(max_length=50)
   btc_wallet   = models.CharField(max_length=300, blank=True)
-  agree_to_terms_and_condition = models.BooleanField(default=False)
   
+  referral = models.ForeignKey(Referral, on_delete=models.SET_NULL, null=True, blank=True)
+  referral_link = models.OneToOneField(ReferralLink, on_delete=models.SET_NULL, null=True, blank=True,  related_name='user_referral_link')
+  agree_to_terms_and_condition = models.BooleanField(default=False)
+  total_earned_commission = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+  earning = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+  pending_commission = models.DecimalField(max_digits=10, decimal_places=2, default=0)
   
   # required 
   date_joined   = models.DateTimeField(auto_now_add=True)
@@ -94,6 +101,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     verbose_name = 'User'
     verbose_name_plural = 'Users'
     app_label = 'accounts'
+
+
+
+
 
 
 

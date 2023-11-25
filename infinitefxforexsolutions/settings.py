@@ -20,6 +20,8 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'accounts.User'#specify that we are going to user this User model in account models.py
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -33,6 +35,7 @@ INSTALLED_APPS = [
     "accounts",
     "core",
     'django_apscheduler',
+    'referral_system',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +61,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'accounts.context_processors.userprofile_context',
             ],
         },
     },
@@ -158,15 +162,6 @@ APSCHEDULER_JOBSTORES = {
 
 
 
-
-
-
-
-
-
-
-
-
 JAZZMIN_SETTINGS = {
     'site_header': "INFINTEFX",
     'site_brand': "Grow your wealth",
@@ -186,6 +181,10 @@ JAZZMIN_SETTINGS = {
         "core.deposit":"fas fa-donate",
         "core.investment":"fas fa-chart-pie",
         "core.plan":"fas fa-coins",
+        "django_apscheduler.djangoJobExecution":"fas fa-tasks",
+        "django_apscheduler.djangoJob":"fas fa-briefcase",
+        "referral_system.referral":"fas fa-user-friends",
+        "referral_system.referralLink":"fas fa-user-plus",
     },
     "custom_links":{
       "core":[{

@@ -1,0 +1,333 @@
+{% extends 'accounts/dashboardpages/dashbase.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Account History{% endblock %}
+{% block content %}
+
+<div class="acount-container">
+  <div class="account-items">
+    <div class="account-card">
+      <div class="account-card-body">
+
+        <div class="title"><h6>Sort Transactions</h6></div>
+
+        <div class="col-md-12">
+        <form action="{% url 'account_history' %}" method="">
+          {% csrf_token %}
+          <div class="form-group">
+            <select name="category" class="form-control form-control-sm" style="width:100%;">
+              <option value="all_transactions">All transactions</option>
+              <option value="deposit" >Deposit</option>
+              <option value="withdrawal" >Withdrawal</option>
+            </select> 
+          </div>
+            
+
+
+          <div class="form-group">
+            <div class="col-md-12"><h6>From</h6></div>
+            <div class="form-group-item">
+              <div class="form-group-items">
+                <div class="col-sm-12">
+                  <div class="form-group row">
+                  <select name="month_from" class="form-control form-control-sm" style="width: 100%;">
+                    <option value=1 >Jan</option>
+                    <option value=2 >Feb</option>
+                    <option value=3 selected>Mar</option>
+                    <option value=4 >Apr</option>
+                    <option value=5 >May</option>
+                    <option value=6 >Jun</option>
+                    <option value=7 >Jul</option>
+                    <option value=8 >Aug</option>
+                    <option value=9 >Sep</option>
+                    <option value=10 >Oct</option>
+                    <option value=11 >Nov</option>
+                    <option value=12 >Dec</option>
+                  </select>
+
+                  </div>
+                </div>
+              </div>
+              <div class="form-group-items">
+                <div class="form-group row">
+                <div class="col-sm-12">                 
+                  <select name="day_from" class="form-control form-control-sm" style="width: 100%;">
+                    <option value=1 >1</option>
+                    <option value=2 >2</option>
+                    <option value=3 >3</option>
+                    <option value=4 >4</option>
+                    <option value=5 >5</option>
+                    <option value=6 >6</option>
+                    <option value=7 >7</option>
+                    <option value=8 >8</option>
+                    <option value=9 >9</option>
+                    <option value=10 >10</option>
+                    <option value=11 >11</option>
+                    <option value=12 >12</option>
+                    <option value=13 >13</option>
+                    <option value=14 >14</option>
+                    <option value=15 >15</option>
+                    <option value=16 >16</option>
+                    <option value=17 >17</option>
+                    <option value=18 selected>18</option>
+                    <option value=19 >19</option>
+                    <option value=20 >20</option>
+                    <option value=21 >21</option>
+                    <option value=22 >22</option>
+                    <option value=23 >23</option>
+                    <option value=24 >24</option>
+                    <option value=25 >25</option>
+                    <option value=26 >26</option>
+                    <option value=27 >27</option>
+                    <option value=28 >28</option>
+                    <option value=29 >29</option>
+                    <option value=30 >30</option>
+                    <option value=31 >31</option>
+                  </select>
+                </div>
+                </div>
+              </div>
+            
+              <div class="form-group-items">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <!-- <select name=year_from class="form-control form-control-sm" style="width: 100%;">
+                  <option value=2016 >2016</option>
+                  <option value=2017 >2017</option>
+                  <option value=2018 >2018</option>
+                  <option value=2019 >2019</option>
+                  <option value=2020 >2020</option>
+                  <option value=2021 >2021</option>
+                  <option value=2022 >2022</option>
+                  <option value=2023 selected>2023</option>
+                </select> -->
+                <select name="year_from" class="form-control form-control-sm" style="width: 100%;">
+                  <!-- JavaScript will populate the options here -->
+                </select>
+                
+                <script>
+                  // Get the select element
+                  var selectElement = document.querySelector('select[name="year_from"]');
+                
+                  // Get the current year
+                  var currentYear = new Date().getFullYear();
+                
+                  // Generate options for the past 10 years (adjust as needed)
+                  for (var year = currentYear; year >= 2016; year--) {
+                    var option = document.createElement('option');
+                    option.value = year;
+                    option.text = year;
+                    
+                    // Set the selected attribute for the current year
+                    if (year === currentYear) {
+                      option.selected = true;
+                    }
+                
+                    // Append the option to the select element
+                    selectElement.appendChild(option);
+                  }
+                </script>
+                
+              </div>
+            </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="form-group">
+          
+          <div class="col-md-12" style="margin-top: 15px;"><h6>To</h6></div>
+            <div class="form-group-item">
+              <div class="form-group-items">
+              <div class="form-group row">
+              <div class="col-sm-12">
+                <select name="month_to" class="form-control form-control-sm" style="width: 100%;">
+                  <!-- JavaScript will populate the options here -->
+                </select>
+                
+                <script>
+                  // Get the select element
+                  var selectElement = document.querySelector('select[name="month_to"]');
+                
+                  // Get the current month
+                  var currentMonth = new Date().getMonth() + 1; // Adding 1 because months are zero-based
+                
+                  // Generate options for all 12 months
+                  for (var month = 1; month <= 12; month++) {
+                    var option = document.createElement('option');
+                    option.value = month;
+                    option.text = getMonthName(month);
+                    
+                    // Set the selected attribute for the current month
+                    if (month === currentMonth) {
+                      option.selected = true;
+                    }
+                
+                    // Append the option to the select element
+                    selectElement.appendChild(option);
+                  }
+                
+                  // Function to get the month name
+                  function getMonthName(month) {
+                    var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    return monthNames[month - 1];
+                  }
+                </script>
+                                  </div>
+                                </div>
+              </div>
+
+
+              <div class="form-group-items">
+              <div class="form-group row">
+              <div class="col-sm-12">
+                <select name="day_to" class="form-control form-control-sm" style="width: 100%;">
+                </select>
+                
+                <script>
+                  // Get the select element
+                  var selectElement = document.querySelector('select[name="day_to"]');
+                
+                  // Get the current day
+                  var currentDay = new Date().getDate();
+                
+                  // Get the current month
+                  var currentMonth = new Date().getMonth() + 1; // Adding 1 because months are zero-based
+                
+                  // Get the number of days in the current month
+                  var daysInMonth = new Date(new Date().getFullYear(), currentMonth, 0).getDate();
+                
+                  // Generate options for the days of the month
+                  for (var day = 1; day <= daysInMonth; day++) {
+                    var option = document.createElement('option');
+                    option.value = day;
+                    option.text = day;
+                    
+                    // Set the selected attribute for the current day
+                    if (day === currentDay) {
+                      option.selected = true;
+                    }
+                
+                    // Append the option to the select element
+                    selectElement.appendChild(option);
+                  }
+                </script>
+                                  </div>
+                                </div>
+              </div>
+
+              <div class="form-group-items">
+              <div class="form-group row">
+              <div class="col-sm-12">
+              <select name=year_to class="form-control form-control-sm" style="width: 100%;">
+              </select>
+
+              <script>
+                var selectElement = document.querySelector('select[name="year_to"]');
+                var currentYear = new Date().getFullYear();
+                for (var year = currentYear; year >= 2016; year--) {
+                  var option = document.createElement('option');
+                  option.value = year;
+                  option.text = year;
+                  
+                  // Set the selected attribute for the current year
+                  if (year === currentYear) {
+                    option.selected = true;
+                  }
+              
+                  // Append the option to the select element
+                  selectElement.appendChild(option);
+                }
+              </script>
+                                  </div>
+                                </div>
+              </div>
+
+            </div>
+
+          </div>
+          
+
+          <div class="form-group">
+            <input class="btn" type="submit" value="Go">                  
+          </div>
+
+        </form>
+
+
+        </div>
+  </div>
+
+ <!-- Add this section to display search results -->
+ 
+  <div class="col-md-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <div class="account-card-body">
+            
+              <table class="table" >
+                <thead align=center>
+                  <tr>                   
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  </tr>
+                </thead>
+                {% if deposit_transactions or withdraw_transactions %}   
+                    {% if  withdraw_transactions %}  
+                      {% for item in withdraw_transactions %}   
+                        <tbody style="display: flex; justify-content:space-between;">                    
+                          <tr>
+                          <td>Withdrawal</td>
+                          </tr>
+
+                          <tr>
+                            <td >${{item.amount}}</td>
+                          </tr>
+                          <tr>
+                            <td>{{item.created_at}}</td>
+                          </tr>
+                          <tr>
+                    
+                        </tbody>
+                  {% endfor %}
+                  {% endif %}
+
+                  {% if  deposit_transactions %}  
+                    {% for item in deposit_transactions %}
+                    <tbody style="display: flex; justify-content:space-between;">                    
+                      <tr>
+                      <td>Deposit</td>
+                      </tr>
+
+                      <tr>
+                        <td >${{item.amount}}</td>
+                      </tr>
+                      <tr>
+                        <td>{{item.created_at}}</td>
+                      </tr>
+                      <tr>
+                
+                    </tbody>
+                    {% endfor %}
+                  {% endif %}
+
+                  {% else %}
+                  <tbody style="display: flex; justify-content:space-between;">                    
+                    <tr>
+                    No transactions
+                    </tr>
+              
+                  </tbody>
+                {% endif %}
+              </table>
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+</div>
+
+{% endblock %}

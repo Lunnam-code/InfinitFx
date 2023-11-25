@@ -27,19 +27,25 @@
       </a>
     </div>
     <div class="side-menu-items">
-      <a href="#deposit">
+      <a href="{% url 'investment' %}">
+        <img src="{% static 'assets/image/dashboard/withdrawal.png' %}" class="side-menu-icon">
+        <span class="side-menu-span">Investment</span>
+      </a>
+    </div>
+    <div class="side-menu-items">
+      <a href="{% url 'deposit_list' %}">
         <img src="{% static 'assets/image/dashboard/deposite-list.png' %}" class="side-menu-icon">
         <span class="side-menu-span">Deposit List</span>
       </a>
     </div>
     <div class="side-menu-items">
-      <a href="#">
+      <a href="{% url 'account_history' %}">
         <img src="{% static 'assets/image/dashboard/bank-account.png' %}" class="side-menu-icon">
         <span class="side-menu-span">Account History</span>
       </a>
     </div>
     <div class="side-menu-items">
-      <a href="#">
+      <a href="{% url 'referral' %}">
         <img src="{% static 'assets/image/dashboard/referral.png' %}" class="side-menu-icon">
         <span class="side-menu-span">Referrals</span>
       </a>
@@ -71,15 +77,22 @@
       </a>
     </div>
     <div class="profile-image" id="profile-image">
-      <a class="prof-link"><img src="{% static 'assets/image/dashboard/user.png' %}" class="dashboard-icon profi" alt="profile Image" class="profile-img">
-        <p>Nnamdi</p>
+      
+      <a class="prof-link">
+        {% if userprofile.profile_image %}
+          <img src="{{ userprofile.profile_image.url }}" class="dashboard-icon profi" alt="profile Image" class="profile-img">
+        {% else %}
+
+          <img src="{% static 'assets/image/dashboard/user.png' %}" class="dashboard-icon profi" alt="profile Image" class="profile-img">
+        {% endif %}
+        <p>{{ userprofile.first_name }}</p>
       </a>
       <ul class="profile-item">
-        <li><a href="#">
+        <li><a href="{% url 'profile' %}">
           <img src="{% static 'assets/image/dashboard/user1.png' %}" alt="">
           <span>Profile</span>
         </a></li>
-        <li><a href="index.html">
+        <li><a href="{% url 'setting' %}">
           <img src="{% static 'assets/image/dashboard/setting.png' %}" alt="">
           <span>Setting</span>
         </a></li>

@@ -366,6 +366,10 @@ $(document).on('submit','.form', function(e){
   }
 
 
+  // Extract referral link parameter from the URL
+  var urlParams = new URLSearchParams(window.location.search);
+  var referralLinkParam = urlParams.get('ref');
+
   $.ajax({
     type: 'POST',
     url : "{% url 'register' %}",
@@ -378,6 +382,7 @@ $(document).on('submit','.form', function(e){
       country: $('#country').val(),
       pay_account: $('#pay_account').val(),
       agree: $('#agree').val(),
+      referral_link: referralLinkParam,
       csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
     },
     success: function(response){

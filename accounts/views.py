@@ -17,19 +17,29 @@ from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
 from django.conf import settings
-from core.models import Deposit
-
+from core.models import Deposit, Withdraw, Investment
+from referral_system.models import ReferralLink, Referral
+from decimal import Decimal
+from django.db.models import Q
 
 import requests
 
+@login_required(login_url = 'login')
 def dashboard(request):
   user = request.user
+  # user_details = User.objects.get(id=user.id)
   deposit = Deposit.objects.filter(user=user)
+  withdrawal = Withdraw.objects.filter(user=user).order_by('-created_at')
+  active_investment =  Investment.objects.filter(user=user, status='active')
   context = {
+    # 'user_details':user_details,
     'deposit':deposit,
+    'withdrawal':withdrawal,
+    'active_investment':active_investment,
   }
   return render(request, 'accounts/dashboardpages/dashboard.html',context)
 
+@login_required(login_url = 'login')
 def deposite(request):
   if request.method == 'POST':
     amount = int(request.POST['amount'])
@@ -67,6 +77,7 @@ def deposite(request):
   else:
     return render(request, 'accounts/dashboardpages/deposite.html')
 
+@login_required(login_url = 'login')
 def invest(request):
   if request.method == 'POST':
     amount = int(request.POST['amount'])
@@ -78,8 +89,141 @@ def invest(request):
   else:
     return render(request, 'accounts/dashboardpages/invest.html')
 
+@login_required(login_url = 'login')
 def withdraw(request):
-  return render(request, 'accounts/dashboardpages/withdraw.html')
+  user_id = request.user.id
+  pending_withdraw = 0
+  if request.method == 'POST':
+    amount = Decimal(request.POST['w-amount'])
+    
+    user = User.objects.get(id=user_id)
+    if user.account_balance >= amount :
+      user.account_balance -= amount
+      user.save()
+      
+      make_withdraw = Withdraw.objects.create(
+        user = request.user,
+        amount = amount,
+      ) 
+      make_withdraw.save()
+      
+      messages.success(request, 'Pending Approval')
+      return redirect('withdraw')
+    else:
+      messages.error(request, 'Insufficient Fund')
+      return redirect('withdraw')
+      
+  else:
+    withdraw_details = Withdraw.objects.filter(user=request.user,status= 'pending')
+    for item in withdraw_details:
+      pending_withdraw += item.amount
+      
+    data = {
+      'pending_withdraw':pending_withdraw,
+    }
+    return render(request, 'accounts/dashboardpages/withdraw.html', data)
+
+@login_required(login_url = 'login')
+def referralfun(request):
+  # ref_code = User.objects.get(id=request.user.id)
+  return render(request, 'accounts/dashboardpages/referrals.html')
+
+@login_required(login_url = 'login')
+def deposit_list(request):
+  Standard = 0
+  Business = 0
+  Professional = 0
+  Enterprise = 0
+  total = 0
+  deposit_item = Deposit.objects.filter(user=request.user, status='approved')
+  
+  for item in deposit_item:
+    if 50 <= item.amount <=299:
+      Standard += item.amount
+    elif 300 <= item.amount <= 999:
+      Business += item.amount
+    elif 1000 <= item.amount <= 4999:
+      Professional += item.amount
+    else:
+      Enterprise += item.amount
+    
+    total = Standard + Business + Professional + Enterprise
+  data = {
+    'Standard':Standard,
+    'Business':Business,
+    'Professional':Professional,
+    'Enterprise':Enterprise,
+    'total':total
+  }
+  return render(request, 'accounts/dashboardpages/deposit-list.html',data)
+
+@login_required(login_url = 'login')
+def account_history(request):
+  user = request.user
+  if request.method == 'GET':
+    category = request.GET.get('category', 'all_transactions')
+    search_type = request.GET.get('search-type', '-1')
+    month_from = request.GET.get('month_from')
+    day_from = request.GET.get('day_from')
+    year_from = request.GET.get('year_from')
+    month_to = request.GET.get('month_to')
+    day_to = request.GET.get('day_to')
+    year_to = request.GET.get('year_to')
+
+    # Check if date parameters are provided and not None
+    if all([month_from, day_from, year_from, month_to, day_to, year_to]):
+        # Assuming 'all_transactions' means all categories
+        if category == 'all_transactions':
+            deposit_transactions = Deposit.objects.filter(
+              user=user,
+              created_at__gte=f'{year_from}-{month_from}-{day_from}',
+              created_at__lte=f'{year_to}-{month_to}-{day_to}'
+            )
+            withdraw_transactions = Withdraw.objects.filter(
+              user=user,
+              created_at__gte=f'{year_from}-{month_from}-{day_from}',
+              created_at__lte=f'{year_to}-{month_to}-{day_to}'
+            )
+        elif category == 'deposit':
+            deposit_transactions = Deposit.objects.filter(
+              user=user,
+              created_at__gte=f'{year_from}-{month_from}-{day_from}',
+              created_at__lte=f'{year_to}-{month_to}-{day_to}'
+            )
+            withdraw_transactions = Withdraw.objects.none()
+        elif category == 'withdrawal':
+            deposit_transactions = Deposit.objects.none()
+            withdraw_transactions = Withdraw.objects.filter(
+              user=user,
+              created_at__gte=f'{year_from}-{month_from}-{day_from}',
+              created_at__lte=f'{year_to}-{month_to}-{day_to}'
+            )
+        # Add similar logic for other categories if needed
+        print(deposit_transactions)
+        # Render the template with the filtered transactions
+        return render(request, 'accounts/dashboardpages/account_history.html.html', {
+            'deposit_transactions': deposit_transactions,
+            'withdraw_transactions': withdraw_transactions,
+            # Add other context variables as needed
+        })
+    print('Nothing')
+    # Handle other HTTP methods or invalid parameters
+    return render(request, 'accounts/dashboardpages/account_history.html.html', {
+        'error_message': 'Invalid parameters provided.',
+        # Add other context variables as needed
+    })
+ 
+@login_required(login_url = 'login')   
+def investment(request):
+  user = request.user
+  investment_list = Investment.objects.filter(user=user)
+  data = {
+    'investment_list':investment_list
+  }
+  return render(request, 'accounts/dashboardpages/investment.html',data)
+
+
+
 
 def register(request):
   if request.user.is_authenticated:
@@ -94,6 +238,8 @@ def register(request):
     country = request.POST['country']
     pay_account = request.POST['pay_account']
     agree = request.POST['agree']
+    # referral_link = request.POST['referral_link']
+    
     
     # check if email eist 
     useremail = User.objects.filter(email=email).exists()
@@ -104,7 +250,26 @@ def register(request):
       return JsonResponse({'success': False, 'error_code': 'Username_taken', 'message': 'Username has been taken'})
     else:
       user = User.objects.create( first_name=fname,last_name=lname,username=username,email=email,password=hashed_password,country=country,btc_wallet=pay_account,agree_to_terms_and_condition=True)
+      
+      referral_link = ReferralLink.objects.create(user=user)
+      user.referral_link = referral_link
       user.save()
+      
+      referral_link_param = request.POST['referral_link']
+      if referral_link_param:
+        try:
+          # Extract the referral user from the referral link
+          referral_user = ReferralLink.objects.get(link=referral_link_param).user
+          
+          refer = Referral.objects.create(
+            referrer = referral_user,
+            referred_user = user
+          )
+          refer.save()
+        except ReferralLink.DoesNotExist:
+          pass
+      
+      
       return JsonResponse({'success': True, 'message': 'Account Created successful'})
   else:
     return render(request, 'accounts/register.html')
@@ -133,7 +298,7 @@ def login(request):
     return render(request, 'accounts/login.html')
 
 
-@login_required(login_url = 'signin')
+@login_required(login_url = 'login')
 def signout(request):
   auth.logout(request)
   messages.success(request, 'You have logged out!')
@@ -178,29 +343,65 @@ def resetpassword_validate(request,uidb64, token):
         user = None
     
     if user is not None and default_token_generator.check_token(user,token):
-        request.session['uid'] = uid #save uid inside session, so that i can access this session when reseting the password
-        messages.success(request,'Please reset your password')
-        return redirect('resetpassword')
+      request.session['uid'] = uid #save uid inside session, so that i can access this session when reseting the password
+      messages.success(request,'Please reset your password')
+      return redirect('resetpassword')
     else:
         messages.error(request, 'This link has expired!')
         return redirect('login')
 
 def resetpassword(request):
-    if request.method == 'POST':
-        password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
+  if request.method == 'POST':
+    password = request.POST['password']
+    confirm_password = request.POST['confirm_password']
+    
+    if password == confirm_password:
         
-        if password == confirm_password:
-            
-            uid = request.session.get('uid')#get uid from session we save above
-            user = User.objects.get(pk=uid)#get user
-            user.set_password(password)
-            user.save()
-            messages.success(request,'Password Reset Successful')
-            return redirect('login')
-        else:
-            messages.error(request,'Password does not match')
-            return redirect('restpassword')
+      uid = request.session.get('uid')#get uid from session we save above
+      user = User.objects.get(pk=uid)#get user
+      user.set_password(password)
+      user.save()
+      messages.success(request,'Password Reset Successful')
+      return redirect('login')
     else:
-        return render(request, 'accounts/reset_passward.html')
+      messages.error(request,'Password does not match')
+      return redirect('restpassword')
+  else:
+    return render(request, 'accounts/reset_passward.html')
 
+@login_required(login_url='login') 
+def profile(request):
+
+  return render(request, 'accounts/profile.html')
+
+@login_required(login_url='login') 
+def setting(request):
+  user_id = request.user.id
+  
+  if request.method == 'POST':
+    btc = request.POST['btc']
+    
+    user = User.objects.get(id=user_id)
+    user.btc_wallet = btc
+    user.save()
+    messages.success(request, 'Successfully Updated!')
+    return redirect('setting')
+  
+  return render(request, 'accounts/setting.html')
+
+
+@login_required(login_url='login') 
+def profileImage(request):
+  user_id = request.user.id
+
+  if request.method == 'POST':
+    image = request.FILES['imagefile']
+    user = User.objects.get(pk=user_id)  
+    user.profile_image = image 
+    user.save()
+    return redirect('setting')
+  else:
+    user = User.objects.get(pk=user_id)
+    user.profile_image = None
+    user.save()
+    return redirect('setting')

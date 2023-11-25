@@ -1,0 +1,58 @@
+{% extends 'accounts/dashboardpages/dashbase.html' %}
+{% load static %}
+{% block title %}InfiniteFx - Investments{% endblock %}
+{% block content %}
+
+ <!-- profile -->
+ <div class="acount-container">
+  {% if investment_list %}
+    <div class="title"><h6 style="text-align: center; font-size:20px; margin-bottom:5px;">Your Investment</h6></div>
+    
+    <div class="investment-body">
+        <table class="investment-table" >
+          <thead class="table-head">
+            <tr>                   
+            <th>Plan</th>
+            <th>Amount</th>
+            <th>Duration(Hour)</th>
+            <th>Percent(%)</th>
+            <th>Status</th>
+            <th>Profit</th>
+            </tr>
+          </thead>
+          {% for item in investment_list %}
+          <tbody class="investment-tbody">
+                                          
+            <tr>
+              <td class="one">{{item.plan.name}}</td>
+            </tr>
+            <tr>
+              <td class="one1">{{ item.deposit.amount }}</td>
+            </tr>
+            <tr>
+              <td class="one2">{{item.maturity_duration_hour}}</td>
+            </tr>                        
+            <tr>
+              <td class="one2">{{item.plan.profit_percentage}}</td>
+            </tr>                        
+            <tr>
+              <td class="one3">{{item.status}}</td>
+            </tr>                        
+            <tr>
+              <td class="one4">{{item.profit}}</td>
+            </tr> 
+          </tbody>
+          {% endfor %}
+        </table>
+    </div>
+    
+  {% else %}
+    <div class="no-investment">
+      <p>You have not made any investment</p>
+      <a href="{% url 'deposite' %}" style="padding: 5px 10px;" class="cashout">Invest Now</a>
+    </div>
+  {% endif %}
+</div>
+
+
+{% endblock %}
